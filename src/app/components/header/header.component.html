@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg bg-light p-0 nav-cont bg-white">
+    <div class="container-fluid p-0">
+        <a class="navbar-brand logo" [routerLink]="'/home'"></a>
+        <div class="collapse navbar-collapse category-bar" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item category-box category-box__1" [routerLink]="'/discount'">
+                    <div class="container-fluid d-flex flex-column">
+                        <div></div>
+                        <span>Акції</span>
+                    </div>
+                </li>
+                <li class="nav-item category-box category-box__2" [routerLink]="'/rolls'">
+                    <div class="container-fluid d-flex flex-column">
+                        <div></div>
+                        <span>Роли</span>
+                    </div>
+                </li>
+                <li class="nav-item category-box category-box__3" [routerLink]="'/set'">
+                    <div class="container-fluid d-flex flex-column">
+                        <div></div>
+                        <span>Сети</span>
+                    </div>
+                </li>
+                <li class="nav-item category-box category-box__4" [routerLink]="'/drinks'">
+                    <div class="container-fluid d-flex flex-column">
+                        <div></div>
+                        <span>Напої</span>
+                    </div>
+                </li>
+                <li class="nav-item category-box category-box__5" [routerLink]="'/sauces'">
+                    <div class="container-fluid d-flex flex-column">
+                        <div></div>
+                        <span>Соуси</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col d-flex flex-column">
+                    <div ngbDropdown class="d-inline-block">
+                        <button type="button" class="btn drpdwn" id="dropdownBasic1" ngbDropdownToggle></button>
+                        <div class="drpdwn-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem [routerLink]="'/delivery'">Доставка та оплата</button>
+                            <button ngbDropdownItem [routerLink]="'/about-us'">Про нас</button>
+                            <button ngbDropdownItem [routerLink]="'/discount'">Акції</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container we-will-call">
+            <button class="we-will-call__btn">
+                <div class="img-phone"></div>
+                <span>МИ ЗАТЕЛЕФОНУЄМО</span>
+            </button>
+        </div>
+        <div class="container phone-box">
+            <a href="tel:097878098977">(097) 878 08 37</a>
+            <div>Працюємо з <strong>11:00</strong> до <strong>21:30</strong></div>
+        </div>
+        <div class="container admin-in">
+            <button type="button" class="btn admin-office"></button>
+        </div>
+        <button type="button" class="container busket-in">
+            <div class="busket-in__img"></div>
+            <div class="busket-in__count-cash"><strong>{{countCash}}</strong><span>грн</span></div>
+            <div class="busket-in__count">
+                <div class="busket-in__count__circle">{{countArticle}}</div>
+            </div>
+        </button>
+    </div>
+</nav>

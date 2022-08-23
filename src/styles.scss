@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../src/app/shared/style/fonts";
+@import "../src/app/shared/style/variables";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Nunito;
+}
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $mainColor;
+}
