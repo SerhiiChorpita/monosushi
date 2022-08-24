@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../src/app/shared/style/fonts";
 @import "../src/app/shared/style/variables";
+@import "~bootstrap/scss/bootstrap";
 * {
   margin: 0;
   padding: 0;
@@ -8,10 +9,23 @@
   font-family: Nunito;
 }
 /* Importing Bootstrap SCSS file. */
-@import "~bootstrap/scss/bootstrap";
+
+body {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+app-root {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
 ::-webkit-scrollbar {
-  width: 3px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background-color: white;

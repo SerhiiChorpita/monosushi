@@ -1,0 +1,225 @@
+@import "../../shared/style/variables";
+@import "../../shared/style/fonts";
+* {
+  font-family: Nunito;
+}
+.main-footer-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 156px;
+  margin: 0;
+  border-top: 4px solid $mainColor;
+  &__main-box {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1750px;
+    height: 100%;
+    padding: 1.9rem 0 1rem 0;
+    &__1,
+    &__2 {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 25%;
+      padding: 10px 10px 0 11px;
+    }
+    &__1 {
+      &__a1,
+      &__b1,
+      &__c1 {
+        display: flex;
+        flex-flow: row nowrap;
+        width: max-content;
+        height: max-content;
+      }
+      .logo {
+        display: block;
+        width: 151px;
+        height: 75px;
+        background-image: url(../../../assets/images/logo.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 82%;
+        margin: 0;
+        transition: 0.12s;
+      }
+      &__b1 {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        width: 284px;
+        min-width: 235px;
+        padding-left: 44px;
+        div {
+          display: block;
+          width: max-content;
+          a {
+            font-size: 14px;
+            text-decoration: none;
+            color: black;
+            &:hover {
+              color: $mainColor;
+            }
+          }
+        }
+      }
+      &__c1 {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        height: 77px;
+        width: 46%;
+        min-width: 235px;
+        font-size: 13px;
+        div {
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: start;
+          align-items: center;
+          width: 33%;
+          height: 100%;
+          margin: 0;
+          p {
+            margin: 0;
+          }
+          a {
+            font-size: 14px;
+            text-decoration: none;
+            color: black;
+            &:hover {
+              color: $mainColor;
+            }
+          }
+        }
+      }
+    }
+    &__2 {
+      height: 30%;
+      padding-top: 0;
+      margin-top: 20px;
+      &__a2,
+      &__b2,
+      &__с2,
+      &__d2 {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 20%;
+        height: 100%;
+      }
+      &__a2 {
+        width: 10%;
+        font-size: 12px;
+        padding: 0 5px 5px 0;
+      }
+      &__b2 {
+        flex-flow: row nowrap;
+        padding: 0 40px 4px 49px;
+        div {
+          display: block;
+          width: 55px;
+          height: 34px;
+          border: 1px solid lightgray;
+          border-radius: 5px;
+        }
+        .b2-img1,
+        .b2-img2,
+        .b2-img3 {
+          background-repeat: no-repeat;
+          background-size: 67%;
+          background-position: center;
+        }
+        .b2-img1 {
+          background-image: url(../../../assets/images/master-card-img-1.svg);
+        }
+        .b2-img2 {
+          background-image: url(../../../assets/images/visa-card-img-2.svg);
+        }
+        .b2-img3 {
+          background-image: url(../../../assets/images/liqpay-card-img-3.svg);
+        }
+      }
+      &__с2 {
+        width: 18%;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        div {
+          font-size: 12px;
+          span {
+            margin-right: 17px;
+          }
+        }
+        .c2-img1,
+        .c2-img2 {
+          display: block;
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          border: 2px solid transparent;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: $mainColor;
+          z-index: 1;
+          transition: 0.35s;
+          &:hover {
+            border: 2px solid $mainColor;
+            background-color: white;
+          }
+        }
+        .c2-img1 {
+          background-image: url(../../../assets/images/facebook-icon.svg);
+          margin-right: 7px;
+          background-size: 20%;
+        }
+        .c2-img2 {
+          background-image: url(../../../assets/images/instagram-icon.svg);
+          background-size: 40%;
+        }
+      }
+      &__d2 {
+        width: 14%;
+        a {
+          font-size: 12px;
+          text-decoration: none;
+          color: black;
+          &:hover {
+            color: $mainColor;
+          }
+        }
+        .logo-logos {
+          display: block;
+          width: 70px;
+          height: 40px;
+          background-image: url(../../../assets/images/Logo_Logos_IT.svg);
+          background-size: 100%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+}
+
+@media all and (max-width: 480px) {
+}

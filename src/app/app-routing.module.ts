@@ -18,6 +18,8 @@ import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.co
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { OfferContractComponent } from './pages/offer-contract/offer-contract.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +34,7 @@ const routes: Routes = [
   { path: 'delivery', component: DeliveryComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'offer-contract', component: OfferContractComponent },
   {
     path: 'admin', component: AdminComponent, children: [
       { path: 'discount', component: AdminDiscountComponent },

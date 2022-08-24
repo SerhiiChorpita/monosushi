@@ -30,6 +30,7 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OfferContractComponent } from './pages/offer-contract/offer-contract.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminCategoryComponent,
     AdminProductComponent,
     AdminOrdersComponent,
-    DiscountInfoComponent
+    DiscountInfoComponent,
+    OfferContractComponent
   ],
   imports: [
     BrowserModule,
