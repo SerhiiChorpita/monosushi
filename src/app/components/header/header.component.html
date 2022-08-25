@@ -1,10 +1,10 @@
 <div class="main-header-block">
     <div class="main-header-block__1">
         <nav class="navbar navbar-expand-lg bg-light p-0 nav-cont bg-white w-100">
-            <div class="container-fluid p-0">
+            <div class="container-fluid p-0 all-menu">
                 <a class="navbar-brand logo" [routerLink]="'/home'"></a>
                 <div class="collapse navbar-collapse category-bar" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
+                    <ul class="category navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item category-box category-box__1" [routerLink]="'/discount'">
                             <div class="container-fluid d-flex flex-column">
                                 <div></div>
@@ -60,7 +60,10 @@
                     <div>Працюємо з <strong>11:00</strong> до <strong>21:30</strong></div>
                 </div>
                 <div class="container admin-in">
+                    <a href="tel:097878098977" class="cell-phone"></a>
                     <button type="button" class="btn admin-office"></button>
+                    <button type="button" class="btn drpdwn-2"></button>
+
                 </div>
                 <button type="button" class="container busket-in">
                     <div class="busket-in__img"></div>
@@ -71,5 +74,26 @@
                 </button>
             </div>
         </nav>
+    </div>
+    <div class="bg-gray">
+        <div class="busket-out">
+            <div class="busket-out__block-1">
+
+                <div class="nothing-here">
+                    <div></div>
+                    <p><strong>Кошик порожній</strong></p>
+                    <button type="button" class="to-home-page-btn"><strong>ПЕРЕЙТИ ДО КАТАЛОГУ</strong></button>
+                </div>
+
+                <div class="product-to-buy"></div>
+
+            </div>
+            <div class="busket-out__block-2">
+                <div>
+                    <p>Сума: <strong>{{ countCash }}</strong> грн</p>
+                </div>
+                <button type="button" [disabled]=""><strong>ОФОРМИТИ ЗАМОВЛЕННЯ</strong></button>
+            </div>
+        </div>
     </div>
 </div>

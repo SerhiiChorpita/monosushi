@@ -15,7 +15,8 @@ body {
   flex-flow: column;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: auto;
+  overflow: visible;
 }
 app-root {
   display: block;
