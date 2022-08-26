@@ -75,7 +75,7 @@
             </div>
         </nav>
     </div>
-    <div class="bg-gray">
+    <div class="bg-gray-1">
         <div class="busket-out">
             <div class="busket-out__block-1">
 
@@ -96,4 +96,54 @@
             </div>
         </div>
     </div>
+    <div class="bg-gray-2">
+        <div class="form-to-call">
+            <div class="form-to-call__close-box">
+                <button type="button">x</button>
+            </div>
+            <div class="form-to-call__text-box">
+                <p class="form-to-call__text-box__t1">МИ ЗАТЕЛЕФОНУЄМО</p>
+                <p class="form-to-call__text-box__t2">Залиште номер телефону і наші менеджери зв’яжуться з вами</p>
+            </div>
+            <div class="form-to-call__box">
+                <form>
+                    <div class="mb-3">
+                        <input type="name" name="your-name" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Ваше ім'я" aria-required="true" aria-invalid="true">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="your-phone" class=" input inputmask form-control input inputmask"
+                            aria-required="true" aria-invalid="true" placeholder="Ваш номер телефону">
+                    </div>
+                    <button type="submit" class="btn btn-primary">НАДІСЛАТИ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="bg-gray-3">
+        <div class="side-menu">
+            <div class="side-menu__box1">
+                <div class="container-fluid d-flex flex-row sauces-2">
+                    <div></div>
+                    <span>Соуси</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <a [routerLink]="'/delivery'" class="py-2">Доставка та оплата</a>
+                    <a [routerLink]="'/about-us'" class="py-2">Про нас</a>
+                    <a [routerLink]="'/discount'" class="py-2">Акції</a>
+                </div>
+                <div class="container phone-box-2 py-3">
+                    <a href="tel:097878098977">(097) 878 08 37</a>
+                    <div>Працюємо з <strong>11:00</strong> до <strong>21:30</strong></div>
+                </div>
+            </div>
+            <div class="we-will-call-2">
+                <button class="we-will-call-2__btn">
+                    <div class="img-phone-2"></div>
+                    <span>МИ ЗАТЕЛЕФОНУЄМО</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
 </div>
