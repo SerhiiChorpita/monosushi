@@ -20,7 +20,6 @@ import { RollsComponent } from './pages/rolls/rolls.component';
 import { SetComponent } from './pages/set/set.component';
 import { DrinksComponent } from './pages/drinks/drinks.component';
 import { SaucesComponent } from './pages/sauces/sauces.component';
-import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 
@@ -31,6 +30,7 @@ import { AdminProductComponent } from './admin/admin-product/admin-product.compo
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OfferContractComponent } from './pages/offer-contract/offer-contract.component';
+import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delivery-and-payment.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,6 @@ import { OfferContractComponent } from './pages/offer-contract/offer-contract.co
     SetComponent,
     DrinksComponent,
     SaucesComponent,
-    DeliveryComponent,
     AboutUsComponent,
     CheckoutComponent,
     AdminComponent,
@@ -53,7 +52,8 @@ import { OfferContractComponent } from './pages/offer-contract/offer-contract.co
     AdminProductComponent,
     AdminOrdersComponent,
     DiscountInfoComponent,
-    OfferContractComponent
+    OfferContractComponent,
+    DeliveryAndPaymentComponent
   ],
   imports: [
     BrowserModule,

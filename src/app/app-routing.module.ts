@@ -9,7 +9,7 @@ import { RollsComponent } from './pages/rolls/rolls.component';
 import { SetComponent } from './pages/set/set.component';
 import { DrinksComponent } from './pages/drinks/drinks.component';
 import { SaucesComponent } from './pages/sauces/sauces.component';
-import { DeliveryComponent } from './pages/delivery/delivery.component';
+import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delivery-and-payment.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 
@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'set', component: SetComponent },
   { path: 'drinks', component: DrinksComponent },
   { path: 'sauces', component: SaucesComponent },
-  { path: 'delivery', component: DeliveryComponent },
+  { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'offer-contract', component: OfferContractComponent },
