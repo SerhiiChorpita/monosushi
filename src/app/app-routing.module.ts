@@ -26,11 +26,14 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'discount', component: DiscountComponent },
   { path: 'discount:id', component: DiscountInfoComponent },
-  { path: 'product:category', component: ProductComponent },
-  { path: 'rolls', component: RollsComponent },
-  { path: 'set', component: SetComponent },
-  { path: 'drinks', component: DrinksComponent },
-  { path: 'sauces', component: SaucesComponent },
+  {
+    path: 'product', component: ProductComponent, children: [
+      { path: 'rolls', component: RollsComponent },
+      { path: 'set', component: SetComponent },
+      { path: 'drinks', component: DrinksComponent },
+      { path: 'sauces', component: SaucesComponent }
+    ]
+  },
   { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'checkout', component: CheckoutComponent },

@@ -11,6 +11,11 @@
   width: 100vw;
   height: 95px;
   margin: 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 97;
+
   &__1 {
     display: flex;
     justify-content: center;
@@ -18,6 +23,10 @@
     width: 100%;
     max-width: 1750px;
     height: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 97;
   }
 }
 .logo {
@@ -43,6 +52,10 @@
   justify-content: start;
   align-items: center;
   padding-left: 12px;
+  position: sticky;
+  top: 0;
+  left: 0;
+
   ul {
     display: flex;
     justify-content: space-between;
@@ -144,6 +157,7 @@
 }
 .drpdwn {
   margin-left: 7px;
+  z-index: 3;
 }
 .drpdwn,
 .drpdwn-2,
@@ -177,7 +191,7 @@
 .dropdown-toggle,
 .btn,
 .dropdown {
-  z-index: 2;
+  z-index: 1;
   &::hover {
     display: none;
     border: none;
@@ -199,7 +213,7 @@
     border: 2px solid transparent;
     &:hover {
       border: 2px solid $mainColor;
-      background-color: $secondaryColor;
+      background-color: white;
       border-radius: 5px;
     }
   }
@@ -243,7 +257,6 @@
       background-position: center;
       background-size: 40%;
       margin: 0;
-      z-index: 0;
     }
     span {
       text-align: center;
@@ -252,7 +265,6 @@
       height: 100%;
       font-size: 11px;
       font-weight: bold;
-      z-index: 0;
     }
   }
 }
@@ -481,9 +493,9 @@
   opacity: 0;
   display: none;
   // display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
   top: 0;
+  left: 0;
   height: 100%;
 }
 .call-bg {
@@ -496,9 +508,9 @@
   width: fit-content;
   height: 100%;
   position: absolute;
-  top: 0;
-  // left: 0;
-  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 99;
 }
 .form-to-call {
@@ -703,13 +715,14 @@
 
   .logo {
     width: 134px;
-    height: 69px;
+    height: 70px;
     background-size: 78%;
   }
   .category-bar {
     display: none;
     width: 0;
     height: 0;
+
     ul {
       display: none;
     }
@@ -755,7 +768,8 @@
   }
   .basket-out {
     max-height: calc(100% - 60px);
-    height: 100%;
+    height: auto;
+    top: 59px;
     &__block-2 {
       bottom: 60px;
     }
@@ -768,7 +782,7 @@
   }
   .logo {
     width: 70px;
-    height: 69px;
+    height: 70px;
     background-image: url(../../../assets/images/logo-mobile.svg);
     background-size: 58%;
   }
@@ -831,7 +845,7 @@
   }
   .basket-out {
     width: 100%;
-    height: 100%;
+    height: auto;
     top: 58px;
     max-width: none;
     min-width: auto;

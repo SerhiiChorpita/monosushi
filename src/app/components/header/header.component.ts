@@ -24,14 +24,12 @@ export class HeaderComponent implements OnInit {
   public drpdwnMenu = false;
   public toolDrpdwnMenu: string = 'background-image: url(../../../assets/images/bars.svg);';
 
-
-
-
   constructor() { }
 
   ngOnInit(): void {
     this.basketToggle();
   }
+
 
   basketToggle(): void {
     this.basketCheck = !this.basketCheck;
@@ -77,7 +75,7 @@ export class HeaderComponent implements OnInit {
       this.toolDrpdwnMenu = 'background-image:url(../../../assets/images/multiply.svg);';
     } else {
       this.toolDrpdwnMenu = 'background-image:url(../../../assets/images/bars.svg);';
-
     }
   }
+
 }

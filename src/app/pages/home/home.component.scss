@@ -6,28 +6,272 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 650px;
+  height: 600px;
   .bg-full {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    &__info {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      width: 80%;
+      height: 70%;
+      color: white;
+      padding-right: 35%;
+
+      &__header {
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        span {
+          color: $mainColor;
+        }
+        margin: 0;
+      }
+      &__text {
+        font-weight: bold;
+        font-size: 19px;
+        color: lightgray;
+        margin: 0;
+      }
+      button {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        width: 187px;
+        min-height: 56px;
+        height: 56px;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-color: $mainColor;
+        z-index: 1;
+        padding: 2px 10px 0 0;
+        margin-left: 5px;
+        font-weight: bold;
+        transition: all 0.35s;
+
+        &:active {
+          color: $mainColor;
+          border: 2px solid $mainColor;
+          position: relative;
+          top: 4px;
+          left: 0;
+          background-color: $mainColorFluid;
+        }
+      }
+    }
   }
   .after-banner {
     display: flex;
+    flex-flow: row;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    height: 20%;
+    height: 174px;
     background-color: $mainColor;
     background-image: url(../../../assets/sushi-image/home/bg-monosushi-logo.svg),
       url(../../../assets/sushi-image/home/bg-monosushi-logo.svg);
     background-repeat: repeat;
     background-position: 0 0, 190px -52px;
+    padding: 40px 0;
+    &__item-line {
+      display: block;
+      width: 0.2px;
+      height: 130%;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    &__item-1,
+    &__item-2,
+    &__item-3 {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      align-items: center;
+      min-width: 400px;
+      width: 30%;
+      height: 115px;
+      padding: 0 10px;
+      &__img {
+        display: block;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+      }
+      &__text {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+        align-items: center;
+        p {
+          font-size: 18px;
+          margin: 0;
+          strong::selection,
+          &::selection {
+            color: white;
+            background-color: rgba(0, 0, 0, 0);
+          }
+        }
+      }
+    }
+    &__item-1 {
+      &__img {
+        width: 32%;
+        background-image: url(../../../assets/sushi-image/home/mn-delivery-img.svg);
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 176px;
+        height: 56px;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-color: white;
+        color: black;
+        z-index: 1;
+        padding: 2px 10px 0 0;
+        margin-left: 5px;
+        font-weight: bold;
+        position: relative;
+        top: 0;
+        left: 0;
+        transition: all 0.35s;
+        &:hover {
+          border: 2px solid white;
+          background-color: transparent;
+        }
+        &:active {
+          top: 4px;
+        }
+      }
+    }
+    &__item-2 {
+      &__img {
+        width: 24%;
+        background-image: url(../../../assets/sushi-image/home/mono-supermen.svg);
+      }
+    }
+    &__item-3 {
+      &__img {
+        width: 17%;
+        background-image: url(../../../assets/sushi-image/home/mono-bonus.svg);
+      }
+    }
+  }
+}
+.info-delivery {
+  display: block;
+  width: 87%;
+  height: auto;
+  margin: 0 auto;
+  font-size: 22px;
+  padding-top: 100px;
+  transition: height 0.5s;
+  &__text {
+    ol {
+      counter-reset: item;
+      list-style-type: none;
+    }
+    ol li {
+      display: block;
+    }
+    ol li:before {
+      content: counter(item) " ";
+      counter-increment: item;
+      position: relative;
+      right: 25px;
+      top: 0;
+      font-size: 16px;
+    }
+
+    ul li::before {
+      content: "\2022";
+      color: $mainColor;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    display: block;
+    height: 260px;
+    overflow-y: hidden;
+    transition: height 0.5s;
+
+    h1 {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+  }
+  &__button {
+    display: block;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 50px;
+    &__btn {
+      display: block;
+      width: 200px;
+      height: 58px;
+      background: none;
+      border: none;
+      color: $mainColor;
+      text-align: start;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }
 
+@media all and (max-width: 1199px) {
+  .banner-align {
+    height: 700px;
+    .after-banner {
+      padding: 5px 0;
+      height: 250px;
+      justify-content: space-evenly;
+      &__item-1,
+      &__item-2,
+      &__item-3 {
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        min-width: 30%;
+        width: 30%;
+        &__img {
+          height: 115px;
+        }
+        &__text {
+          height: 50%;
+          width: 100%;
+        }
+      }
+      &__item-line {
+        height: 90%;
+      }
+    }
+  }
+}
+@media all and (max-width: 990px) {
+  .bg-full__info {
+    width: 50%;
+    padding: 0;
+  }
+  .info-delivery {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 @media all and (min-width: 768px) {
   .bg-full {
     background-image: url(../../../assets/sushi-image/banner-img-1-1920x650.jpg);
@@ -36,5 +280,18 @@
 @media all and (max-width: 768px) {
   .bg-full {
     background-image: url(../../../assets/sushi-image/banner-img-1-mob-650x650.jpg);
+    .bg-full__info {
+      padding: 0;
+      p {
+        text-shadow: 1px 1px 0 white;
+      }
+    }
+  }
+  .banner-align {
+    .after-banner {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 }

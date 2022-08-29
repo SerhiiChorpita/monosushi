@@ -11,25 +11,25 @@
                                 <span>Акції</span>
                             </div>
                         </li>
-                        <li class="nav-item category-box category-box__2" [routerLink]="'/rolls'">
+                        <li class="nav-item category-box category-box__2" [routerLink]="'/product/rolls'">
                             <div class="container-fluid d-flex flex-column">
                                 <div></div>
                                 <span>Роли</span>
                             </div>
                         </li>
-                        <li class="nav-item category-box category-box__3" [routerLink]="'/set'">
+                        <li class="nav-item category-box category-box__3" [routerLink]="'/product/set'">
                             <div class="container-fluid d-flex flex-column">
                                 <div></div>
                                 <span>Сети</span>
                             </div>
                         </li>
-                        <li class="nav-item category-box category-box__4" [routerLink]="'/drinks'">
+                        <li class="nav-item category-box category-box__4" [routerLink]="'/product/drinks'">
                             <div class="container-fluid d-flex flex-column">
                                 <div></div>
                                 <span>Напої</span>
                             </div>
                         </li>
-                        <li class="nav-item category-box category-box__5" [routerLink]="'/sauces'">
+                        <li class="nav-item category-box category-box__5" [routerLink]="'/product/sauces'">
                             <div class="container-fluid d-flex flex-column">
                                 <div></div>
                                 <span>Соуси</span>
@@ -40,7 +40,7 @@
                         <div class="col d-flex flex-column">
                             <div ngbDropdown class="d-inline-block">
                                 <button type="button" class="btn drpdwn" id="dropdownBasic1" ngbDropdownToggle
-                                    (click)="changeValue()" [style]="toolDrpdwnMenu"></button>
+                                    (click)="changeValue()" [style]="toolDrpdwnMenu" (blur)="changeValue()"></button>
                                 <div class="drpdwn-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                     <button ngbDropdownItem [routerLink]="'/delivery-and-payment'">Доставка та
                                         оплата</button>
@@ -79,72 +79,73 @@
             </div>
         </nav>
     </div>
-    <div class="bg-gray-1" [style]="visibility1" (click)="basketToggle()"></div>
-    <div class="basket-out" [style]="visibility1">
-        <div class=" basket-out__block-1">
+</div>
+<div class="bg-gray-1" [style]="visibility1" (click)="basketToggle()"></div>
+<div class="basket-out" [style]="visibility1">
+    <div class=" basket-out__block-1">
 
-            <div class="nothing-here">
-                <div></div>
-                <p><strong>Кошик порожній</strong></p>
-                <button type="button" class="to-home-page-btn"><strong>ПЕРЕЙТИ ДО КАТАЛОГУ</strong></button>
-            </div>
-
-            <div class="product-to-buy"></div>
-
+        <div class="nothing-here">
+            <div></div>
+            <p><strong>Кошик порожній</strong></p>
+            <button type="button" class="to-home-page-btn"><strong>ПЕРЕЙТИ ДО КАТАЛОГУ</strong></button>
         </div>
-        <div class="basket-out__block-2">
-            <div>
-                <p>Сума: <strong>{{ countCash }}</strong> грн</p>
-            </div>
-            <button type="button" [disabled]=""><strong>ОФОРМИТИ ЗАМОВЛЕННЯ</strong></button>
+
+        <div class="product-to-buy"></div>
+
+    </div>
+    <div class="basket-out__block-2">
+        <div>
+            <p>Сума: <strong>{{ countCash }}</strong> грн</p>
+        </div>
+        <button type="button" [disabled]=""><strong>ОФОРМИТИ ЗАМОВЛЕННЯ</strong></button>
+    </div>
+</div>
+<div class="bg-gray-2" [style]="visibility2" (click)="callToggle()"></div>
+<div class="call-bg" [style]="visibility2">
+    <div class="form-to-call" [style]="visibility2">
+        <div class="form-to-call__close-box">
+            <button type="button" (click)="callToggle()">x</button>
+        </div>
+        <div class="form-to-call__text-box">
+            <p class="form-to-call__text-box__t1">МИ ЗАТЕЛЕФОНУЄМО</p>
+            <p class="form-to-call__text-box__t2">Залиште номер телефону і наші менеджери зв’яжуться з вами</p>
+        </div>
+        <div class="form-to-call__box">
+            <form>
+                <div class="mb-3">
+                    <input type="name" name="your-name" class="form-control" aria-describedby="emailHelp"
+                        placeholder="Ваше ім'я" aria-required="true" aria-invalid="true">
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="your-phone" class=" input inputmask form-control input inputmask"
+                        aria-required="true" aria-invalid="true" placeholder="Ваш номер телефону">
+                </div>
+                <button type="submit" class="btn btn-primary">НАДІСЛАТИ</button>
+            </form>
         </div>
     </div>
-    <div class="bg-gray-2" [style]="visibility2" (click)="callToggle()"></div>
-    <div class="call-bg" [style]="visibility2">
-        <div class="form-to-call" [style]="visibility2">
-            <div class="form-to-call__close-box">
-                <button type="button" (click)="callToggle()">x</button>
-            </div>
-            <div class="form-to-call__text-box">
-                <p class="form-to-call__text-box__t1">МИ ЗАТЕЛЕФОНУЄМО</p>
-                <p class="form-to-call__text-box__t2">Залиште номер телефону і наші менеджери зв’яжуться з вами</p>
-            </div>
-            <div class="form-to-call__box">
-                <form>
-                    <div class="mb-3">
-                        <input type="name" name="your-name" class="form-control" aria-describedby="emailHelp"
-                            placeholder="Ваше ім'я" aria-required="true" aria-invalid="true">
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" name="your-phone" class=" input inputmask form-control input inputmask"
-                            aria-required="true" aria-invalid="true" placeholder="Ваш номер телефону">
-                    </div>
-                    <button type="submit" class="btn btn-primary">НАДІСЛАТИ</button>
-                </form>
-            </div>
+</div>
+<div class="bg-gray-3" [style]="visibility3" (click)="sideMenuToggle()"></div>
+<div class="side-menu" [style]="visibility3">
+    <div class="side-menu__box1">
+        <div class="container-fluid d-flex flex-row sauces-2">
+            <div></div>
+            <span>Соуси</span>
+        </div>
+        <div class="d-flex flex-column">
+            <a [routerLink]="'/delivery-and-payment'" class="py-2">Доставка та оплата</a>
+            <a [routerLink]="'/about-us'" class="py-2">Про нас</a>
+            <a [routerLink]="'/discount'" class="py-2">Акції</a>
+        </div>
+        <div class="container phone-box-2 py-3">
+            <a href="tel:097878098977">(097) 878 08 37</a>
+            <div>Працюємо з <strong>11:00</strong> до <strong>21:30</strong></div>
         </div>
     </div>
-    <div class="bg-gray-3" [style]="visibility3" (click)="sideMenuToggle()"></div>
-    <div class="side-menu" [style]="visibility3">
-        <div class="side-menu__box1">
-            <div class="container-fluid d-flex flex-row sauces-2">
-                <div></div>
-                <span>Соуси</span>
-            </div>
-            <div class="d-flex flex-column">
-                <a [routerLink]="'/delivery-and-payment'" class="py-2">Доставка та оплата</a>
-                <a [routerLink]="'/about-us'" class="py-2">Про нас</a>
-                <a [routerLink]="'/discount'" class="py-2">Акції</a>
-            </div>
-            <div class="container phone-box-2 py-3">
-                <a href="tel:097878098977">(097) 878 08 37</a>
-                <div>Працюємо з <strong>11:00</strong> до <strong>21:30</strong></div>
-            </div>
-        </div>
-        <div class="we-will-call-2">
-            <button class="we-will-call-2__btn" (click)="callToggle()">
-                <div class="img-phone-2"></div>
-                <span>МИ ЗАТЕЛЕФОНУЄМО</span>
-            </button>
-        </div>
+    <div class="we-will-call-2">
+        <button class="we-will-call-2__btn" (click)="callToggle()">
+            <div class="img-phone-2"></div>
+            <span>МИ ЗАТЕЛЕФОНУЄМО</span>
+        </button>
     </div>
+</div>
