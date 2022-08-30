@@ -175,8 +175,10 @@
   margin: 0 auto;
   font-size: 22px;
   padding-top: 100px;
-  transition: height 0.5s;
   &__text {
+    display: block;
+    height: 260px;
+    overflow-y: hidden;
     ol {
       counter-reset: item;
       list-style-type: none;
@@ -192,7 +194,9 @@
       top: 0;
       font-size: 16px;
     }
-
+    ul {
+      list-style: none;
+    }
     ul li::before {
       content: "\2022";
       color: $mainColor;
@@ -201,11 +205,6 @@
       width: 1em;
       margin-left: -1em;
     }
-    display: block;
-    height: 260px;
-    overflow-y: hidden;
-    transition: height 0.5s;
-
     h1 {
       margin-bottom: 50px;
       text-align: center;

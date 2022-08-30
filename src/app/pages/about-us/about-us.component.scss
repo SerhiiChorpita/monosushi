@@ -22,11 +22,293 @@ header {
     list-style: none;
   }
   ul li::before {
-    content: "\229A";
+    content: "\29BF";
     color: $mainColor;
-    font-size: 10px;
+    font-size: 12px;
     display: inline-block;
     width: 2em;
     margin-left: -1em;
+  }
+  .about-us {
+    display: block;
+    width: 100%;
+    height: auto;
+    &__box1 {
+      display: block;
+      width: 60%;
+      margin: 0 auto;
+      &__text1 {
+        font-size: 34px;
+        font-weight: bold;
+      }
+      &__text2,
+      ul {
+        font-size: 20px;
+      }
+    }
+    &__box2,
+    &__box3 {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 70%;
+      height: 420px;
+      margin: 100px auto 50px auto;
+
+      &__img {
+        display: block;
+        width: 50%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        border-radius: 15px;
+      }
+      &__text {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+        margin: 0 20px;
+        &__h {
+          font-size: 34px;
+          font-weight: bold;
+        }
+        &__p {
+          font-size: 20px;
+        }
+      }
+    }
+    &__box2 {
+      &__img {
+        background-image: url(../../../assets/about-us/about-us1.jpg);
+      }
+    }
+    &__box3 {
+      &__img {
+        background-image: url(../../../assets/about-us/about-us2.jpg);
+      }
+    }
+    &__box4 {
+      display: block;
+      width: 70%;
+      height: fit-content;
+      margin: 0 auto;
+      &__h {
+        text-align: center;
+        font-size: 34px;
+        font-weight: bold;
+      }
+      &__swiper-container {
+        cursor: url(../../../assets/about-us/drag.png) 16 9, ew-resize;
+        display: flex;
+        width: 759px;
+        height: auto;
+        margin: 0 auto 50px auto;
+        overflow-x: hidden;
+        &__main-block {
+          transition: all 0.5s;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          width: fit-content;
+          height: fit-content;
+          position: relative;
+          top: 0;
+          right: 0;
+
+          &__box1,
+          &__box2,
+          &__box3,
+          &__box4 {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            align-items: center;
+            min-width: 246px;
+            width: 246px;
+            height: 277px;
+            &::selection {
+              list-style: none;
+              background-color: rgba(0, 0, 0, 0);
+            }
+            &__img,
+            &__text1,
+            &__text2 {
+              &::selection {
+                list-style: none;
+                background-color: transparent;
+              }
+            }
+            &__img {
+              display: block;
+              height: 30%;
+              width: 35%;
+              background-color: $mainColor;
+              border-radius: 15px;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: 60%;
+            }
+            &__text1 {
+              margin-top: 10px;
+              text-align: center;
+              font-size: 20px;
+              font-weight: bold;
+            }
+            &__text2 {
+              text-align: center;
+              font-size: 16px;
+            }
+          }
+          &__box1 {
+            &__img {
+              background-image: url(../../../assets/about-us/advantages-img-1.svg);
+            }
+          }
+          &__box2 {
+            &__img {
+              background-image: url(../../../assets/about-us/advantages-img-2.svg);
+            }
+          }
+          &__box3 {
+            &__img {
+              background-image: url(../../../assets/about-us/advantages-img-3.svg);
+            }
+          }
+          &__box4 {
+            &__img {
+              background-image: url(../../../assets/about-us/advantages-img-4.svg);
+            }
+          }
+        }
+        .line-between {
+          display: block;
+          width: 1px;
+          height: 260px;
+          background-color: lightgray;
+          margin: 4.5px;
+        }
+      }
+
+      &__buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 808px;
+        height: 50px;
+        margin: 0 auto;
+        &__1,
+        &__2 {
+          display: block;
+          width: 50px;
+          height: 50px;
+          border: 1px solid $mainColor;
+          border-radius: 50%;
+          z-index: 1;
+          position: relative;
+          bottom: 13.5rem;
+          left: 0;
+          color: $mainColor;
+          font-size: 20px;
+        }
+        .sliders-button {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 60px;
+          height: 10px;
+          position: relative;
+          bottom: 40px;
+          left: 0;
+          &__1,
+          &__2 {
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: $mainColor;
+            border: 1px solid lightgray;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+    &__box5 {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: baseline;
+      align-items: center;
+      width: 70%;
+      height: auto;
+      margin: 0 auto 50px auto;
+      &__text {
+        font-size: 34px;
+        font-weight: bold;
+        margin: 20px;
+      }
+      &__question1,
+      &__question2,
+      &__question3,
+      &__question4 {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: start;
+        align-items: flex-start;
+        width: 90%;
+        height: auto;
+        border-bottom: 1px solid lightgray;
+        padding: 10px 0;
+
+        &__header {
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: 70px;
+          font-size: 20px;
+          font-weight: bold;
+
+          button {
+            display: block;
+            border: none;
+            background-color: transparent;
+            &:hover {
+              color: $mainColor;
+            }
+          }
+        }
+        &__text {
+          display: block;
+          width: 100%;
+          height: 0;
+          overflow: hidden;
+          font-size: 18px;
+          ol {
+            counter-reset: item;
+            list-style-type: none;
+          }
+          ol li {
+            display: block;
+          }
+          ol li:before {
+            content: counter(item) " ";
+            counter-increment: item;
+            position: relative;
+            right: 25px;
+            top: 0;
+            font-size: 16px;
+          }
+        }
+      }
+      &__question1 {
+        border-top: 1px solid lightgray;
+      }
+      &__question4 {
+        border-bottom: 1px solid lightgray;
+      }
+    }
   }
 }

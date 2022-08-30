@@ -5,8 +5,8 @@
     </div>
     <div class="about-us">
         <div class="about-us__box1">
-            <p class="about-us__box1_text1">Monosushi – доставка неймовірно смачних суші у Львові.</p>
-            <p class="about-us__box1_text2">Головний пріоритет – висока якість їжі та сервісу. Ми – команда
+            <p class="about-us__box1__text1">Monosushi – доставка неймовірно смачних суші у Львові.</p>
+            <p class="about-us__box1__text2">Головний пріоритет – висока якість їжі та сервісу. Ми – команда
                 професіоналів, яка щодня працює для
                 Вас. Якість та Швидкість! – це два основних пріоритети в роботі команди. В першу чергу звичайно ж
                 Якість. Суші готуються без затримок, одразу ж після Вашого замовлення. А завдяки сучасним технологіям та
@@ -18,24 +18,131 @@
             </ul>
         </div>
         <div class="about-us__box2">
-            <div class="about-us__box2_img"></div>
-            <div class="about-us__box2_text"></div>
+            <div class="about-us__box2__img"></div>
+            <div class="about-us__box2__text">
+                <p class="about-us__box2__text__h">Привіт! Познайомимось?</p>
+                <p class="about-us__box2__text__p">Monosushi – це доставка найсмачніших суші у Львові, яка була створена
+                    командою перфекціоністів. Двоє
+                    друзів, які
+                    обожнюють роли вирішили створити продукт, якого їм не вистачало на ринку Львова. Продукт, в якому
+                    ідеальним буде все:
+                    смак, упакування, сервіс і все це за лояльною ціною!</p>
+            </div>
         </div>
         <div class="about-us__box3">
-            <div class="about-us__box3_text"></div>
-            <div class="about-us__box3_img"></div>
+            <div class="about-us__box3__text">
+                <p class="about-us__box2__text__h">Наш пріоритет - ваша посмішка від задоволення</p>
+                <p class="about-us__box2__text__p"><strong>Monosushi</strong>– це доставка одного (mono) продукту. Роли
+                    вже давно стали рядовою стравою, проте процес їх приготування всеодно
+                    залишається цілим мистецтвом. Суші потрібно готувати за чіткою технологією суворо дотримуючись
+                    традицій. І в цьому ми
+                    справжні експерти! Сумніваєтесь? Тоді замовляйте безкоштовну доставку Monosushi і насолоджуйтесь.
+                </p>
+            </div>
+            <div class="about-us__box3__img"></div>
         </div>
         <div class="about-us__box4">
-            <div class="about-us__box4_text"></div>
-            <!-- Carousel -->
+            <p class="about-us__box4__h">Наші переваги</p>
+            <div class="about-us__box4__swiper-container">
+                <div class="about-us__box4__swiper-container__main-block" [style.right]="sliderStatus?'0':'256px'"
+                    (mousedown)="showSliderMove1($event)" (mousemove)="showSliderMove2($event)"
+                    (mouseup)="showSliderMove3()">
+                    <div class="about-us__box4__swiper-container__main-block__box1">
+                        <div class="about-us__box4__swiper-container__main-block__box1__img"></div>
+                        <p class="about-us__box4__swiper-container__main-block__box1__text1">Свіжі продукти</p>
+                        <p class="about-us__box4__swiper-container__main-block__box1__text2">Наші інгредієнти ще вчора
+                            плавали у морі, а сьогодні вже у Ваших сушиках</p>
+                    </div>
+                    <div class="line-between"></div>
+                    <div class="about-us__box4__swiper-container__main-block__box2">
+                        <div class="about-us__box4__swiper-container__main-block__box2__img"></div>
+                        <p class="about-us__box4__swiper-container__main-block__box2__text1">Неймовірний смак</p>
+                        <p class="about-us__box4__swiper-container__main-block__box2__text2">Ми створили сушики, які
+                            змусять Ваші рецептори вибухнути від насолоди</p>
+                    </div>
+                    <div class="line-between"></div>
+                    <div class="about-us__box4__swiper-container__main-block__box3">
+                        <div class="about-us__box4__swiper-container__main-block__box3__img"></div>
+                        <p class="about-us__box4__swiper-container__main-block__box3__text1">Великі порції</p>
+                        <p class="about-us__box4__swiper-container__main-block__box3__text2">Ми віднайшли ідеальні
+                            порції ролів та завжди дотримуємось грамажу вказаного на сайті</p>
+                    </div>
+                    <div class="line-between"></div>
+                    <div class="about-us__box4__swiper-container__main-block__box4">
+                        <div class="about-us__box4__swiper-container__main-block__box4__img"></div>
+                        <p class="about-us__box4__swiper-container__main-block__box4__text1">Чистота на кухні</p>
+                        <p class="about-us__box4__swiper-container__main-block__box4__text2">Ми як ніхто інший
+                            розуміємо, що морепродукти потребують абсолютної чистоти на кухні</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-us__box4__buttons">
+                <button class="about-us__box4__buttons__1" (click)="sliderStatus = true" [disabled]="sliderStatus">{{
+                    arrowLeft }}</button>
+                <div class="sliders-button">
+                    <button class="sliders-button__1" (click)="sliderStatus = true"
+                        [style.background-color]="!sliderStatus?'white':''"></button>
+                    <button class="sliders-button__2" (click)="sliderStatus = false"
+                        [style.background-color]="sliderStatus?'white':''"></button>
+                </div>
+                <button class="about-us__box4__buttons__2" (click)="sliderStatus = false" [disabled]="!sliderStatus">{{
+                    arrowRight }}</button>
+            </div>
         </div>
         <div class="about-us__box5">
-            <div class="about-us__box5_text"></div>
-            <div class="about-us__box5_question1"></div>
-            <div class="about-us__box5_question2"></div>
-            <div class="about-us__box5_question3"></div>
-            <div class="about-us__box5_question4"></div>
-
+            <div class="about-us__box5__text">Популярні запитання</div>
+            <div class="about-us__box5__question1">
+                <div class="about-us__box5__question1__header"
+                    (click)="question1=!question1; question2= true;question3 = true;question4 = true">
+                    <div>Як можна замовити, якщо наша адреса не входить у вашу
+                        зону доставки?</div>
+                    <button>{{!question1?arrowUp:arrowDown}}</button>
+                </div>
+                <div class="about-us__box5__question1__text" [style.height]="question1?'0':'auto'">
+                    <p>Якщо ваша адреса знаходиться поза межами нашої зони доставки, ви можете:</p>
+                    <ol>
+                        <li>Забрати замовлення самовивозом за однією з наших адрес. (В такому випадку ви отримаєте
+                            “Запечені моно макі з лососем у
+                            подарунок).</li>
+                        <li>Дізнатись в оператора чи є можливість зробити виключення для доставки поза межі зони в даний
+                            момент часу.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="about-us__box5__question2">
+                <div class="about-us__box5__question2__header"
+                    (click)="question2=!question2;question1= true;question3 = true;question4 = true">
+                    <div>Скільки часу очікувати на замовлення?
+                    </div>
+                    <button>{{!question2?arrowUp:arrowDown}}</button>
+                </div>
+                <div class="about-us__box5__question2__text" [style.height]="question2?'0':'auto'">
+                    <p>Час доставки залежить від адреси замовлення.</p>
+                    <p>Доставка в зелену зону – до 1 год.</p>
+                    <p>Доставка в жовту зону – до 1,5 год.</p>
+                </div>
+            </div>
+            <div class="about-us__box5__question3">
+                <div class="about-us__box5__question3__header"
+                    (click)="question3=!question3;question2= true;question1 = true;question4 = true">
+                    <div>Доставка безкоштовна?</div>
+                    <button>{{!question3?arrowUp:arrowDown}}</button>
+                </div>
+                <div class="about-us__box5__question3__text" [style.height]="question3?'0':'auto'">
+                    Так, доставка безкоштовна при мінімальній сумі замовлення 200 грн в зелену зону доставки та 300 грн
+                    в жовту зону.
+                </div>
+            </div>
+            <div class="about-us__box5__question4">
+                <div class="about-us__box5__question4__header"
+                    (click)="question4=!question4;question2= true;question3 = true;question1 = true">
+                    <div>До якої години ви приймаєте замовлення?</div>
+                    <button>{{!question4?arrowUp:arrowDown}}</button>
+                </div>
+                <div class="about-us__box5__question4__text" [style.height]="question4?'0':'auto'">Ми приймаємо
+                    замовлення кожного дня з 11:00 по 21:30 ( у
+                    зв’язку з комендантською годиною )</div>
+            </div>
         </div>
     </div>
 </header>
