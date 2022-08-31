@@ -12,8 +12,8 @@ export class AboutUsComponent implements OnInit {
   public evX2!: number;
   public arrowLeft = '<';
   public arrowRight = '>';
-  public arrowUp = '^';
-  public arrowDown = 'v';
+  public arrowUp = '⮝';
+  public arrowDown = '⮟';
 
   public question1 = true;
   public question2 = true;

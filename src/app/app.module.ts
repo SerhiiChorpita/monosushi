@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +31,9 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OfferContractComponent } from './pages/offer-contract/offer-contract.component';
 import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delivery-and-payment.component';
+
+import { GoogleMapsModule } from '@angular/google-maps';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +66,9 @@ import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delive
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    HttpClientJsonpModule,
+    NgbModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
