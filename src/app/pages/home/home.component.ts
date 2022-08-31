@@ -7,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   public buttonNameStatus = true;
-  public buttonName: string = 'Дізнатись більше v';
-
-
+  public buttonName: string = 'Дізнатись більше ⮟';
 
   constructor() { }
 
@@ -19,9 +17,9 @@ export class HomeComponent implements OnInit {
   btnNameChange() {
     this.buttonNameStatus = !this.buttonNameStatus;
     if (this.buttonNameStatus) {
-      this.buttonName = 'Дізнатись більше v';
+      this.buttonName = 'Дізнатись більше ⮟';
     } else {
-      this.buttonName = 'Згорнути ^';
+      this.buttonName = 'Згорнути ⮝';
     }
   }
 

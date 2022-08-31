@@ -1,5 +1,164 @@
 @import "../../shared/style/variables";
 
+@media all and (min-width: 1020px) {
+  .main-block {
+    &__1 {
+      flex-flow: row wrap;
+      width: 100%;
+      height: 300px;
+      &__green-zone,
+      &__yellow-zone {
+        width: 50%;
+        height: 100%;
+        &__text {
+          width: 45%;
+        }
+      }
+    }
+    &__4 {
+      &__delivery {
+        flex-flow: row nowrap;
+        &__1,
+        &__2 {
+          width: 50%;
+          height: 100%;
+        }
+        &__3,
+        &__5 {
+          width: 65%;
+        }
+      }
+      .line-separator {
+        display: block;
+      }
+    }
+  }
+}
+@media all and (min-width: 501px) {
+  .main-block__2 {
+    display: flex;
+    width: 100%;
+  }
+}
+@media all and (max-width: 500px) {
+  .main-block__2 {
+    display: none;
+  }
+}
+@media all and (min-width: 769px) and (max-width: 1020px) {
+  .main-block {
+    &__1 {
+      flex-flow: row wrap;
+      width: 100%;
+      height: 600px;
+      &__green-zone,
+      &__yellow-zone {
+        width: 65%;
+        height: 50%;
+        &__text {
+          width: 45%;
+        }
+      }
+    }
+    &__4 {
+      &__delivery {
+        flex-flow: row nowrap;
+        &__1,
+        &__2 {
+          width: 65%;
+          height: 50%;
+        }
+        &__3,
+        &__5 {
+          width: 70%;
+        }
+      }
+      .line-separator {
+        display: block;
+      }
+    }
+  }
+}
+@media all and (min-width: 346px) and (max-width: 768px) {
+  .main-block {
+    &__1 {
+      flex-flow: row wrap;
+      width: 100%;
+      height: 50rem;
+      &__green-zone,
+      &__yellow-zone {
+        flex-flow: column nowrap;
+        width: 100%;
+        height: 50%;
+        &__text {
+          max-width: 16rem;
+          width: auto;
+        }
+      }
+    }
+    &__4 {
+      &__delivery {
+        flex-flow: wrap;
+        &__1,
+        &__2 {
+          width: 80%;
+          height: 50%;
+          &__text {
+            width: auto;
+          }
+        }
+        &__3,
+        &__5 {
+          width: 80%;
+        }
+      }
+      .line-separator {
+        display: none;
+      }
+    }
+  }
+}
+@media all and (max-width: 345px) {
+  .main-block {
+    &__1 {
+      flex-flow: row wrap;
+      width: 100%;
+      height: 50rem;
+      &__green-zone,
+      &__yellow-zone {
+        flex-flow: column nowrap;
+        width: 100%;
+        height: 50%;
+        &__text {
+          max-width: 16rem;
+          width: auto;
+        }
+      }
+    }
+    &__4 {
+      &__delivery {
+        flex-flow: wrap;
+        &__1,
+        &__2 {
+          flex-flow: column;
+          width: 100%;
+          height: 50%;
+          &__text {
+            width: auto;
+          }
+        }
+        &__3,
+        &__5 {
+          width: 90%;
+        }
+      }
+      .line-separator {
+        display: none;
+      }
+    }
+  }
+}
+
 header {
   display: flex;
   flex-flow: column nowrap;
@@ -29,18 +188,15 @@ header {
   margin: 20px auto 50px auto;
   &__1 {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 300px;
     margin-bottom: 50px;
     &__green-zone,
     &__yellow-zone {
       display: flex;
       align-items: center;
-      width: 50%;
-      height: 100%;
       padding: 0 20px;
       &__img {
         display: block;
@@ -56,7 +212,6 @@ header {
         flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
-        width: 45%;
         height: 100%;
         text-align: center;
         &__1 {
@@ -100,17 +255,15 @@ header {
     }
   }
   &__2 {
-    display: flex;
     justify-content: center;
     align-items: center;
-    width: 70%;
     height: auto;
     margin-bottom: 50px;
+    overflow: auto;
   }
   &__3,
   &__5 {
     display: block;
-    width: 65%;
     height: fit-content;
     font-size: 18px;
     margin-bottom: 50px;
@@ -121,6 +274,7 @@ header {
     flex-flow: column nowrap;
     width: 65%;
     height: fit-content;
+    margin-bottom: 50px;
     &__header {
       display: block;
       width: 100%;
@@ -133,16 +287,17 @@ header {
 
     &__delivery {
       display: flex;
-      flex-flow: row nowrap;
+      justify-content: center;
+
       width: 100%;
       height: 90%;
       &__1,
       &__2 {
         display: flex;
-        width: 50%;
-        height: 100%;
         &__img {
           display: block;
+          min-width: 70px;
+          min-height: 70px;
           width: 70px;
           height: 70px;
           border-radius: 15px;
@@ -176,7 +331,6 @@ header {
         }
       }
       .line-separator {
-        display: block;
         width: 1px;
         height: 7rem;
         border: 0.2px solid lightgray;

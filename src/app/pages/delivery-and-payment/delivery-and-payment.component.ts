@@ -13,7 +13,7 @@ export class DeliveryAndPaymentComponent implements OnInit {
   apiLoaded: Observable<boolean>;
 
   constructor(httpClient: HttpClient) {
-    this.apiLoaded = httpClient.jsonp('http://maps.googleapis.com/maps/api/js?key=AIzaSyDGOKmY3VDI-gEUwD1ypAZD2QOaZwVAEzM', 'callback')
+    this.apiLoaded = httpClient.jsonp('http://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY', 'callback')
       .pipe(
         map(() => true),
         catchError(() => of(false)),

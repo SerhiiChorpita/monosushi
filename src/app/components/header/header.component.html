@@ -1,4 +1,6 @@
 <div class="main-header-block">
+    <div class="bg-gray-3" [style]="visibility3" (click)="sideMenuToggle()"></div>
+
     <div class="main-header-block__1">
         <nav class="navbar navbar-expand-lg bg-light p-0 nav-cont bg-white w-100">
             <div class="container-fluid p-0 all-menu">
@@ -63,7 +65,7 @@
                 </div>
                 <div class="container admin-in">
                     <a href="tel:097878098977" class="cell-phone"></a>
-                    <button type="button" class="btn admin-office"></button>
+                    <button type="button" class="btn admin-office" [routerLink]="'/admin'"></button>
                     <button type="button" class="btn drpdwn-2" (click)="sideMenuToggle()"
                         [style]="toolsideMenu"></button>
                 </div>
@@ -125,7 +127,6 @@
         </div>
     </div>
 </div>
-<div class="bg-gray-3" [style]="visibility3" (click)="sideMenuToggle()"></div>
 <div class="side-menu" [style]="visibility3">
     <div class="side-menu__box1">
         <div class="container-fluid d-flex flex-row sauces-2">

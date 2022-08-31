@@ -8,7 +8,7 @@ header {
   width: 100%;
   height: max-content;
   padding: 20px;
-  div {
+  .blue-line-box {
     width: fit-content;
     .blue-line {
       display: block;
@@ -35,7 +35,6 @@ header {
     height: auto;
     &__box1 {
       display: block;
-      width: 60%;
       margin: 0 auto;
       &__text1 {
         font-size: 34px;
@@ -49,17 +48,13 @@ header {
     &__box2,
     &__box3 {
       display: flex;
-      flex-flow: row nowrap;
       justify-content: space-evenly;
       align-items: center;
       width: 70%;
-      height: 420px;
-      margin: 100px auto 50px auto;
-
+      min-height: 420px;
       &__img {
         display: block;
         width: 50%;
-        height: 100%;
         background-repeat: no-repeat;
         background-size: 100%;
         background-position: center;
@@ -71,7 +66,6 @@ header {
         justify-content: center;
         align-items: center;
         width: 50%;
-        height: 100%;
         margin: 0 20px;
         &__h {
           font-size: 34px;
@@ -105,16 +99,13 @@ header {
       &__swiper-container {
         cursor: url(../../../assets/about-us/drag.png) 16 9, ew-resize;
         display: flex;
-        width: 759px;
         height: auto;
         margin: 0 auto 50px auto;
         overflow-x: hidden;
         &__main-block {
           transition: all 0.5s;
           display: flex;
-          flex-flow: row nowrap;
           align-items: center;
-          width: fit-content;
           height: fit-content;
           position: relative;
           top: 0;
@@ -186,18 +177,15 @@ header {
           }
         }
         .line-between {
-          display: block;
           width: 1px;
           height: 260px;
           background-color: lightgray;
-          margin: 4.5px;
         }
       }
 
       &__buttons {
-        display: flex;
         justify-content: space-between;
-        width: 808px;
+        width: 90%;
         height: 50px;
         margin: 0 auto;
         &__1,
@@ -310,5 +298,111 @@ header {
         border-bottom: 1px solid lightgray;
       }
     }
+  }
+}
+
+@media all and (min-width: 991px) {
+  .about-us__box1 {
+    width: 60%;
+  }
+  .about-us__box2,
+  .about-us__box3 {
+    flex-flow: row nowrap;
+    margin: 100px auto 50px auto;
+    height: 420px;
+
+    .about-us__box2__img,
+    .about-us__box3__img {
+      width: 50%;
+      height: 100%;
+    }
+    .about-us__box2__text,
+    .about-us__box3__text {
+      width: 50%;
+      height: 100%;
+    }
+  }
+  .about-us__box4__swiper-container {
+    width: fit-content;
+    &__main-block {
+      flex-flow: row nowrap;
+      width: 759px;
+    }
+  }
+
+  .about-us__box4__buttons {
+    display: flex;
+    min-width: 768px;
+    max-width: 859px;
+    width: 859px;
+  }
+  .lb1,
+  .lb2,
+  .lb3 {
+    display: block;
+  }
+  .line-between {
+    margin: 4.5px;
+  }
+}
+@media all and (max-width: 990px) {
+  .about-us__box1 {
+    width: 70%;
+  }
+  .about-us__box2,
+  .about-us__box3 {
+    flex-flow: column nowrap;
+    margin: 50px auto;
+    height: auto;
+    .about-us__box2__img,
+    .about-us__box3__img {
+      width: 100%;
+      min-height: 250px;
+      height: 50%;
+    }
+    .about-us__box2__text,
+    .about-us__box3__text {
+      width: 100%;
+      min-height: 250px;
+      height: auto;
+    }
+  }
+  .about-us {
+    &__box4 {
+      &__swiper-container__main-block {
+        justify-content: center;
+        flex-flow: row wrap;
+        width: 100%;
+      }
+      &__buttons {
+        display: none;
+      }
+    }
+  }
+}
+@media all and (max-width: 990px) and (min-width: 769px) {
+  .lb2 {
+    display: none;
+  }
+  .lb1,
+  .lb3 {
+    display: block;
+  }
+  .line-between {
+    margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .about-us__box1 {
+    width: 95%;
+  }
+  .about-us__box4__swiper-container__main-block {
+    width: 90%;
+  }
+  .lb1,
+  .lb2,
+  .lb3 {
+    display: none;
   }
 }

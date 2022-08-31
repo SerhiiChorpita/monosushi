@@ -217,7 +217,7 @@
     margin-bottom: 50px;
     &__btn {
       display: block;
-      width: 200px;
+      width: 210px;
       height: 58px;
       background: none;
       border: none;
@@ -225,6 +225,7 @@
       text-align: start;
       &:hover {
         cursor: pointer;
+        text-decoration: underline;
       }
     }
   }
