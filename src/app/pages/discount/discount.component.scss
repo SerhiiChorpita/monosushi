@@ -1,5 +1,22 @@
 @import "../../shared/style/variables";
 
+@media all and(max-width:768px) {
+  .main-container {
+    display: flex;
+    flex-flow: column;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    &__box {
+      width: 100%;
+    }
+    .btn-style {
+      width: 90%;
+      font-size: 1em;
+    }
+  }
+}
+
 header {
   display: flex;
   flex-flow: column nowrap;
@@ -17,5 +34,37 @@ header {
       border-radius: 15px;
       background-color: $mainColor;
     }
+  }
+}
+.no-border {
+  border: none;
+}
+.card-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 2px solid $mainColor;
+}
+
+.btn-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 257px;
+  height: 46px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: $mainColor;
+  border: 2px solid transparent;
+  margin: 0 auto;
+  &:hover {
+    background-color: transparent;
+    border: 2px solid $mainColor;
   }
 }

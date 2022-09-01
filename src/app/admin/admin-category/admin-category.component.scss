@@ -1,0 +1,40 @@
+@import "../../shared/style/fonts";
+@import "../../shared/style/variables";
+
+.add-category-btn,
+.btn-submit {
+  margin: 0 0 20px 0;
+  display: block;
+  width: 255px;
+  height: 50px;
+  background-color: transparent;
+  border: 2px solid $mainColor;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  &:hover {
+    background-color: $mainColor;
+    border: 2px solid transparent;
+  }
+}
+.btn-submit {
+  width: 300px;
+  background-color: $mainColor;
+  border: 2px solid transparent;
+  &:hover {
+    background-color: transparent;
+    border: 2px solid $mainColor;
+  }
+}
+tr {
+  border-bottom: 2px solid $mainColor;
+}
+.btn-style {
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  color: $mainColor;
+  &:hover {
+    text-decoration: underline;
+  }
+}

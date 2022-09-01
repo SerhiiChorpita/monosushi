@@ -1,1 +1,80 @@
-<p>admin-category works!</p>
+<div class="col">
+    <div class="container">
+        <button class="add-category-btn" (click)="changeStatus();initCategoryForm()">
+            {{!adminCategoryStatus?'ДО КАТЕГОРІЙ':'ДОДАТИ КАТЕГОРІЮ'}}
+        </button>
+    </div>
+    <ng-container *ngIf="!adminCategoryStatus">
+        <div class="col-8">
+            <form [formGroup]="categoryForm" (ngSubmit)="addCategory()">
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="name" class="form-label">*Назва</label>
+                        <input formControlName="name" name="name" type="text" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="name" class="form-label">*Шлях</label>
+                        <input formControlName="path" name="header" type="text" class="form-control" id="header">
+                    </div>
+                </div>
+                <ng-container *ngIf="!isUploaded">
+                    <div class="mb-3">
+                        <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar progress-bar-striped" role="progressbar"
+                            aria-label="Default striped example" [style.width.%]="uploadPercent" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="isUploaded">
+                    <div class="row">
+                        <div class="mb-3 d-flex justify-content-center">
+                            <img [src]="valueByControl('imagePath')" alt="" [style.width]="'25%'">
+                        </div>
+                        <div class="mb-3 w-20 d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger" (click)="deleteImage()">видалити
+                                зображення</button>
+                        </div>
+                    </div>
+                </ng-container>
+                <button [disabled]="categoryForm.invalid" type="submit"
+                    class="btn btn-submit w-33">{{editStatus?'ЗБЕРЕГТИ ЗМІНИ':
+                    'ОПУБЛІКУВАТИ КАТЕГОРІЮ'}}</button>
+            </form>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="adminCategoryStatus">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Назва</th>
+                        <th scope="col">Шлях</th>
+                        <th scope="col">Картинка</th>
+                        <th scope="col">Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of adminCategory; index as i">
+                        <td>№{{ i+1 }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.path }}</td>
+                        <td>
+                            <img [src]="category.imagePath" alt="" height="50px">
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column align-items-start">
+                                <button (click)="editCategory(category);changeStatus()" type="button"
+                                    class="btn btn-style me-2 ">Редагувати дії</button>
+                                <button [disabled]="editStatus" (click)="deleteCategory(category)" type="button"
+                                    class="btn btn-style">Видалити</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+</div>

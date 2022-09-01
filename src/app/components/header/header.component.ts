@@ -77,5 +77,11 @@ export class HeaderComponent implements OnInit {
       this.toolDrpdwnMenu = 'background-image:url(../../../assets/images/bars.svg);';
     }
   }
-
+  scrollToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 }

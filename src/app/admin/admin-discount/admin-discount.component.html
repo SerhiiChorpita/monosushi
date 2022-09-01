@@ -1,1 +1,97 @@
-<p>admin-discount works!</p>
+<div class="col">
+    <div class="container">
+        <button class="add-discount-btn" (click)="changeStatus();initDiscountsForm()">
+            {{!adminDiscountStatus?'ДО СПИСКУАКЦІЙ':'ДОДАТИ АКЦІЮ'}}
+        </button>
+    </div>
+
+    <ng-container *ngIf="!adminDiscountStatus">
+        <div class="col-8">
+            <form [formGroup]="discountForm" (ngSubmit)="addDiscount()">
+                <div class="mb-3">
+                    <input formControlName="date" name="date" type="text" class="form-control" id="date"
+                        [value]="currentDate" style="display: none;">
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="name" class="form-label">*Назва</label>
+                        <input formControlName="name" name="name" type="text" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="name" class="form-label">*Заголовок</label>
+                        <input formControlName="header" name="header" type="text" class="form-control" id="header">
+                    </div>
+                </div>
+                <div class="mb-3 col-12">
+                    <label for="name" class="form-label">*Опис</label>
+                    <textarea formControlName="description" name="description" type="text" class="form-control"
+                        id="description" [style.height]="'150px'"></textarea>
+                </div>
+                <ng-container *ngIf="!isUploaded">
+                    <div class="mb-3">
+                        <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar progress-bar-striped" role="progressbar"
+                            aria-label="Default striped example" [style.width.%]="uploadPercent" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="isUploaded">
+                    <div class="row">
+                        <div class="mb-3 d-flex justify-content-center">
+                            <img [src]="valueByControl('imagePath')" alt="" [style.width]="'100%'">
+                        </div>
+                        <div class="mb-3 w-20 d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger" (click)="deleteImage()">видалити
+                                зображення</button>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <button [disabled]="discountForm.invalid" type="submit"
+                    class="btn btn-submit w-33">{{editStatus?'ЗБЕРЕГТИ ЗМІНИ':
+                    'ОПУБЛІКУВАТИ АКЦІЮ'}}</button>
+            </form>
+        </div>
+    </ng-container>
+
+
+    <ng-container *ngIf="adminDiscountStatus">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Назва</th>
+                        <th scope="col">Заголовок</th>
+                        <th scope="col">Опис</th>
+                        <th scope="col">Картинка</th>
+                        <th scope="col">Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let discount of adminDiscounts">
+                        <td>{{ discount.date }}</td>
+                        <td>{{ discount.name }}</td>
+                        <td>{{ discount.header }}</td>
+                        <td>{{ discount.description | slice:0:60}}
+                            <span *ngIf="discount.description.length>60">...</span>
+                        </td>
+                        <td>
+                            <img [src]="discount.imagePath" alt="" height="50px">
+                        </td>
+                        <td>
+                            <div class="col">
+                                <button (click)="editDiscount(discount);changeStatus()" type="button"
+                                    class="btn btn-style me-2 ">Редагувати дії</button>
+                                <button [disabled]="editStatus" (click)="deleteDiscount(discount)" type="button"
+                                    class="btn btn-style">Видалити</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+</div>

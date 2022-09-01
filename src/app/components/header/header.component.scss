@@ -175,12 +175,14 @@
   outline: none;
 
   &:hover {
-    transform: rotate(180deg);
     border: 2px solid $mainColor;
     background-color: white;
     outline: none;
     border-radius: 5px;
     box-shadow: none;
+  }
+  &:focus {
+    transform: rotate(180deg);
   }
 }
 .drpdwn-2 {
@@ -298,7 +300,7 @@
   .admin-office {
     background-image: url(../../../assets/images/user.svg);
     background-size: 47%;
-    &:hover {
+    &:focus {
       transform: none;
     }
   }
@@ -493,7 +495,6 @@
   visibility: hidden;
   opacity: 0;
   display: none;
-  // display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -503,7 +504,6 @@
   visibility: hidden;
   opacity: 0;
   display: none;
-  // display: flex;
   justify-content: center;
   align-items: center;
   width: fit-content;
@@ -600,7 +600,6 @@
   visibility: hidden;
   opacity: 0;
   display: none;
-  // display: block;
   position: fixed;
   height: 100%;
   top: 70px;
@@ -612,7 +611,6 @@
   visibility: hidden;
   opacity: 0;
   display: none;
-  // display: flex;
   flex-flow: column nowrap;
   width: 50%;
   height: 85%;

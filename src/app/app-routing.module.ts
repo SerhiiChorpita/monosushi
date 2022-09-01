@@ -22,7 +22,7 @@ import { OfferContractComponent } from './pages/offer-contract/offer-contract.co
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'discount', component: DiscountComponent },
   { path: 'discount:id', component: DiscountInfoComponent },
@@ -44,7 +44,7 @@ const routes: Routes = [
       { path: 'category', component: AdminCategoryComponent },
       { path: 'product', component: AdminProductComponent },
       { path: 'orders', component: AdminOrdersComponent },
-      { path: '', pathMatch: 'full', component: AdminDiscountComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'discount' },
     ]
   },
 ];

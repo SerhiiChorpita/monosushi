@@ -3,18 +3,18 @@
         <div class="main-footer-block__main-box__1">
             <div class="main-footer-block__main-box__1__a1">
                 <div>
-                    <a class="navbar-brand logo" [routerLink]="'/home'"></a>
+                    <a class="navbar-brand logo" [routerLink]="'/home'" (click)=" scrollToTop()"></a>
                 </div>
             </div>
             <div class="main-footer-block__main-box__1__b1">
                 <div>
-                    <a ngbDropdownItem [routerLink]="'/discount'">Акції</a>
+                    <a ngbDropdownItem [routerLink]="'/discount'" (click)=" scrollToTop()">Акції</a>
                 </div>
                 <div>
-                    <a ngbDropdownItem [routerLink]="'/about-us'">Про нас</a>
+                    <a ngbDropdownItem [routerLink]="'/about-us'" (click)=" scrollToTop()">Про нас</a>
                 </div>
                 <div>
-                    <a ngbDropdownItem [routerLink]="'/offer-contract'">Оферта</a>
+                    <a ngbDropdownItem [routerLink]="'/offer-contract'" (click)=" scrollToTop()">Оферта</a>
                 </div>
             </div>
             <div class="main-footer-block__main-box__1__c1">
@@ -60,25 +60,25 @@
 </div>
 <div class="collapse navbar-collapse category-bar" id="navbarSupportedContent">
     <ul class="navbar-nav mb-2 mb-lg-0 category">
-        <li class="nav-item category-box category-box__1" [routerLink]="'/discount'">
+        <li class="nav-item category-box category-box__1" [routerLink]="'/discount'" (click)=" scrollToTop()">
             <div class="container-fluid d-flex flex-column">
                 <div></div>
                 <span>Акції</span>
             </div>
         </li>
-        <li class="nav-item category-box category-box__2" [routerLink]="'/rolls'">
+        <li class="nav-item category-box category-box__2" [routerLink]="'/rolls'" (click)=" scrollToTop()">
             <div class="container-fluid d-flex flex-column">
                 <div></div>
                 <span>Роли</span>
             </div>
         </li>
-        <li class="nav-item category-box category-box__3" [routerLink]="'/set'">
+        <li class="nav-item category-box category-box__3" [routerLink]="'/set'" (click)=" scrollToTop()">
             <div class="container-fluid d-flex flex-column">
                 <div></div>
                 <span>Сети</span>
             </div>
         </li>
-        <li class="nav-item category-box category-box__4" [routerLink]="'/drinks'">
+        <li class="nav-item category-box category-box__4" [routerLink]="'/drinks'" (click)=" scrollToTop()">
             <div class="container-fluid d-flex flex-column">
                 <div></div>
                 <span>Напої</span>

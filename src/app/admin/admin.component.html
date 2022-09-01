@@ -1,1 +1,18 @@
-<p>admin works!</p>
+<div class="container-fluid my-5 px-3">
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link dtn-nav" type="button" [routerLink]="[ 'discount' ]" routerLinkActive="active-plus"
+                (click)="scrollToTop()">Акції</button>
+            <button class="nav-link dtn-nav" type="button" [routerLink]="[ 'category' ]" routerLinkActive="active-plus"
+                (click)="scrollToTop()">Категорії</button>
+            <button class="nav-link dtn-nav" type="button" [routerLink]="[ 'product' ]" routerLinkActive="active-plus"
+                (click)="scrollToTop()">Продукти</button>
+            <button class="nav-link dtn-nav" type="button" [routerLink]="[ 'orders' ]" routerLinkActive="active-plus"
+                (click)="scrollToTop()">Замовлення</button>
+            <button class="exit-btn" type="button" (click)="scrollToTop()">Вихід</button>
+        </div>
+        <div class="tab-content w-100" id="v-pills-tabContent">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
