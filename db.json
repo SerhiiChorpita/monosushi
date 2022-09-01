@@ -4,9 +4,9 @@
       "date": "09.2022",
       "name": "рол тижня",
       "header": "50% знижка на «Рол тижня»",
-      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню. «Рол тижня» ви можете знайти на головній сторінці нашого сайту. Знижка діє при мінімальній сумі замовлення 200 грн. Ця акція не поєднується з іншими акціями.",
-      "imagePath": "https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg",
-      "id": 3
+      "description": "Смачні суші",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi.appspot.com/o/images%2Fcompressed-2.jpg?alt=media&token=b7b80ac6-5e1c-41aa-82b3-36cbaa24b991",
+      "id": 4
     }
   ],
   "category": [
@@ -14,7 +14,7 @@
       "id": 1,
       "name": "роли",
       "path": "rols",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=23703779-ce1b-44ff-9dda-4733f80293cc"
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=dba2d7c9-4ec8-4265-9185-6cb5a972df0d"
     }
   ]
 }
