@@ -1,1 +1,72 @@
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
+
+<header>
+    <div>
+        <div class="blue-line"></div>
+        <h1>Продукти</h1>
+    </div>
+</header>
+<div class="main-container containet">
+    <div class="main-block">
+        <div class="main-block__roll-selector">
+            <div [class]="select1?'select-active':'select-disabled'" class="main-block__roll-selector__1"
+                (click)="tableSelect(); select1 = true">
+                <button>Всі</button>
+            </div>
+            <div [class]="select2?'select-active':'select-disabled'" class="main-block__roll-selector__2"
+                (click)="tableSelect(); select2 = true">
+                <button>Філадельфія</button>
+            </div>
+            <div [class]="select3?'select-active':'select-disabled'" class="main-block__roll-selector__3"
+                (click)="tableSelect(); select3 = true">
+                <button>Каліфорнія</button>
+            </div>
+            <div [class]="select4?'select-active':'select-disabled'" class="main-block__roll-selector__4"
+                (click)="tableSelect(); select4 = true">
+                <button>Запечені</button>
+            </div>
+            <div [class]="select5?'select-active':'select-disabled'" class="main-block__roll-selector__5"
+                (click)="tableSelect(); select5 = true">
+                <button>Фірмові</button>
+            </div>
+            <div [class]="select6?'select-active':'select-disabled'" class="main-block__roll-selector__6"
+                (click)="tableSelect(); select6 = true">
+                <button>Макі</button>
+            </div>
+            <div [class]="select7?'select-active':'select-disabled'" class="main-block__roll-selector__7"
+                (click)="tableSelect(); select7 = true">
+                <button>Преміум</button>
+            </div>
+        </div>
+        <div class="main-block__roll-sell">
+
+            <ng-container *ngFor="let product of productStorage; index as i">
+                <div class="roll-product m-2">
+                    <div class="roll-product__img">
+                        <img [src]="product.imagePath">
+                    </div>
+                    <div class="roll-product__name">
+                        <div><span>{{product.name}}</span></div>
+                    </div>
+                    <div class="roll-product__weight">
+                        <div class="roll-product__weight__1"><span>{{product.ingredients}}</span></div>
+                        <div class="roll-product__weight__2"><strong><span>{{product.weight}}</span></strong></div>
+                    </div>
+                    <div class="roll-product__order">
+                        <div class="roll-product__order__1"><strong><span>{{product.price}}</span></strong>
+                            грн<span></span></div>
+                        <div class="roll-product__order__2">
+                            <button class="decrement">-</button>
+                            <input [value]="product.count" type="text" readonly class="product-qty">
+                            <button class="increment">+</button>
+                        </div>
+                        <div class="roll-product__order__3">
+                            <button>Замовити</button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+        </div>
+    </div>
+</div>

@@ -7,7 +7,8 @@ export interface IProductRequest {
     ingredients: string,
     weight: number,
     price: number,
-    imagePath: string
+    imagePath: string,
+    count: number
 }
 
 export interface IProductResponse extends IProductRequest {
