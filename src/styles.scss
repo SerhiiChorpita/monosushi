@@ -2,12 +2,21 @@
 @import "../src/app/shared/style/fonts";
 @import "../src/app/shared/style/variables";
 @import "~bootstrap/scss/bootstrap";
+@import "~ngx-toastr/toastr";
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Nunito;
 }
+
+#toast-container {
+  position: fixed;
+  top: 0.3rem;
+  right: 0.3rem;
+}
+
 /* Importing Bootstrap SCSS file. */
 
 body {

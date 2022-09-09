@@ -1,1 +1,15 @@
-<p>discount-info works!</p>
+<ng-container *ngIf="discount">
+    <div class="container-fluid">
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="img-mod">
+                    <div class="img-mod__line"></div>
+                    <p>{{ discount.name| titlecase}}</p>
+                </div>
+                <div class="card-body">
+                    <p>{{ discount.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

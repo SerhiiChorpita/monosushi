@@ -9,14 +9,16 @@
     <div class="main-container row">
         <ng-container *ngIf="userDiscount.length>0">
             <div class="col-6 mt-3 main-container__box" *ngFor="let discount of userDiscount">
-                <div class="card w-100  no-border">
-                    <img [src]="discount.imagePath" class="card-img" alt="...">
-                    <div class="card-name">{{ discount.name }}</div>
+                <a class="card w-100  no-border" [routerLink]="[ '/discount', discount.id]">
+                    <div class="card__img-cont card-img">
+                        <img [src]="discount.imagePath" class="card__img-cont__card-img" style="background-size: 110%">
+                    </div>
+                    <div class="card-name">{{ discount.name|uppercase }}</div>
                     <div class="card-body text-center">
                         <a href="#" class="btn btn-style" [routerLink]="[ '/discount', discount.id]">ДІЗНАТИСЬ
                             БІЛЬШЕ</a>
                     </div>
-                </div>
+                </a>
             </div>
         </ng-container>
         <ng-container *ngIf="userDiscount.length === 0">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IDiscountResponce } from 'src/app/shared/interface/disount/discount';
+import { IDiscountResponse } from 'src/app/shared/interface/disount/discount';
 import { DiscountService } from 'src/app/shared/services/disount/discount.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { DiscountService } from 'src/app/shared/services/disount/discount.servic
   styleUrls: ['./discount.component.scss']
 })
 export class DiscountComponent implements OnInit {
-  public userDiscount: Array<IDiscountResponce> = [];
+  public userDiscount: Array<IDiscountResponse> = [];
 
   constructor(
     private discountService: DiscountService

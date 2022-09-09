@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IDiscountRequest, IDiscountResponce } from '../../interface/disount/discount';
+import { IDiscountRequest, IDiscountResponse } from '../../interface/disount/discount';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +14,20 @@ export class DiscountService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<IDiscountResponce[]> {
-    return this.http.get<IDiscountResponce[]>(this.api.discount)
+  getAll(): Observable<IDiscountResponse[]> {
+    return this.http.get<IDiscountResponse[]>(this.api.discount)
   }
 
-  getOne(id: number): Observable<IDiscountResponce> {
-    return this.http.get<IDiscountResponce>(`${this.api.discount}/${id}`)
+  getOne(id: number): Observable<IDiscountResponse> {
+    return this.http.get<IDiscountResponse>(`${this.api.discount}/${id}`)
   }
 
-  create(discount: IDiscountRequest): Observable<IDiscountResponce> {
-    return this.http.post<IDiscountResponce>(this.api.discount, discount)
+  create(discount: IDiscountRequest): Observable<IDiscountResponse> {
+    return this.http.post<IDiscountResponse>(this.api.discount, discount)
   }
 
-  update(discount: IDiscountRequest, id: number): Observable<IDiscountResponce> {
-    return this.http.patch<IDiscountResponce>(`${this.api.discount}/${id}`, discount)
+  update(discount: IDiscountRequest, id: number): Observable<IDiscountResponse> {
+    return this.http.patch<IDiscountResponse>(`${this.api.discount}/${id}`, discount)
   }
 
   delete(id: number): Observable<void> {

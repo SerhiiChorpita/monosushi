@@ -6,6 +6,6 @@ export interface IDiscountRequest {
     imagePath: string
 }
 
-export interface IDiscountResponce extends IDiscountRequest {
+export interface IDiscountResponse extends IDiscountRequest {
     id: number
 }

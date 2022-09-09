@@ -4,6 +4,6 @@ export interface ICategoryRequest {
     imagePath: string
 }
 
-export interface ICategoryResponce extends ICategoryRequest {
+export interface ICategoryResponse extends ICategoryRequest {
     id: number
 }

@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'discount', component: DiscountComponent },
-  { path: 'discount:id', component: DiscountInfoComponent },
+  { path: 'discount/:id', component: DiscountInfoComponent },
   {
     path: 'product', component: ProductComponent, children: [
       { path: 'rolls', component: RollsComponent },

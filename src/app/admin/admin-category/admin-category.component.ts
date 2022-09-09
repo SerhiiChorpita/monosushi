@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { percentage, deleteObject, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { getDownloadURL } from '@firebase/storage';
-import { ICategoryResponce } from 'src/app/shared/interface/category/category';
+import { ToastrService } from 'ngx-toastr';
+import { ICategoryResponse } from 'src/app/shared/interface/category/category';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 
 @Component({
@@ -16,9 +17,9 @@ export class AdminCategoryComponent implements OnInit {
   public categoryForm!: FormGroup;
 
   public description!: string;
-  public imagePath!: string;
+  public imagePath: string = 'null';
 
-  public adminCategory!: ICategoryResponce[];
+  public adminCategory!: ICategoryResponse[];
   private currentCategoryId = 0;
   public isUploaded = false;
   public editStatus = false;
@@ -29,7 +30,8 @@ export class AdminCategoryComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private fb: FormBuilder,
-    private storage: Storage
+    private storage: Storage,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +52,6 @@ export class AdminCategoryComponent implements OnInit {
   loadCategory() {
     this.categoryService.getAll().subscribe(data => {
       this.adminCategory = data
-      console.log(data);
     })
   }
 
@@ -59,10 +60,12 @@ export class AdminCategoryComponent implements OnInit {
     if (this.editStatus) {
       this.categoryService.update(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
         this.loadCategory();
+        this.toastr.success('Category successfully updated');
       })
     } else {
       this.categoryService.create(this.categoryForm.value).subscribe(() => {
         this.loadCategory();
+        this.toastr.success('Category successfully created');
       })
     }
     this.editStatus = false;
@@ -77,7 +80,7 @@ export class AdminCategoryComponent implements OnInit {
     })
   }
 
-  editCategory(category: ICategoryResponce): void {
+  editCategory(category: ICategoryResponse): void {
     this.categoryForm.patchValue({
       id: category.id,
       name: category.name,
@@ -89,9 +92,10 @@ export class AdminCategoryComponent implements OnInit {
     this.isUploaded = true;
   }
 
-  deleteCategory(category: ICategoryResponce): void {
+  deleteCategory(category: ICategoryResponse): void {
     this.categoryService.delete(category.id).subscribe(() => {
       this.loadCategory();
+      this.toastr.success('Category successfully deleted');
     })
   }
 

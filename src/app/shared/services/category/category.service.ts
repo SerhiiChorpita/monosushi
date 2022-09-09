@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ICategoryRequest, ICategoryResponce } from '../../interface/category/category';
+import { ICategoryRequest, ICategoryResponse } from '../../interface/category/category';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +14,20 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<ICategoryResponce[]> {
-    return this.http.get<ICategoryResponce[]>(this.api.category)
+  getAll(): Observable<ICategoryResponse[]> {
+    return this.http.get<ICategoryResponse[]>(this.api.category)
   }
 
-  getOne(id: number): Observable<ICategoryResponce> {
-    return this.http.get<ICategoryResponce>(`${this.api.category}/${id}`)
+  getOne(id: number): Observable<ICategoryResponse> {
+    return this.http.get<ICategoryResponse>(`${this.api.category}/${id}`)
   }
 
-  create(category: ICategoryRequest): Observable<ICategoryResponce> {
-    return this.http.post<ICategoryResponce>(this.api.category, category)
+  create(category: ICategoryRequest): Observable<ICategoryResponse> {
+    return this.http.post<ICategoryResponse>(this.api.category, category)
   }
 
-  update(category: ICategoryRequest, id: number): Observable<ICategoryResponce> {
-    return this.http.patch<ICategoryResponce>(`${this.api.category}/${id}`, category)
+  update(category: ICategoryRequest, id: number): Observable<ICategoryResponse> {
+    return this.http.patch<ICategoryResponse>(`${this.api.category}/${id}`, category)
   }
 
   delete(id: number): Observable<void> {

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { percentage, deleteObject, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { getDownloadURL } from '@firebase/storage';
-import { IDiscountResponce } from 'src/app/shared/interface/disount/discount';
+import { ToastrService } from 'ngx-toastr';
+import { IDiscountResponse } from 'src/app/shared/interface/disount/discount';
 import { DiscountService } from 'src/app/shared/services/disount/discount.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class AdminDiscountComponent implements OnInit {
   public description!: string;
   public imagePath!: string;
 
-  public adminDiscounts!: IDiscountResponce[];
+  public adminDiscounts!: IDiscountResponse[];
   private currentDiscountId = 0;
   public isUploaded = false;
   public editStatus = false;
@@ -31,7 +32,8 @@ export class AdminDiscountComponent implements OnInit {
   constructor(
     private discountService: DiscountService,
     private fb: FormBuilder,
-    private storage: Storage
+    private storage: Storage,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -59,14 +61,11 @@ export class AdminDiscountComponent implements OnInit {
       description: [null, Validators.required],
       imagePath: [this.imagePath, Validators.required]
     })
-    console.log(this.imagePath);
-
   }
 
   loadDiscounts() {
     this.discountService.getAll().subscribe(data => {
-      this.adminDiscounts = data
-      console.log(data);
+      this.adminDiscounts = data;
     })
   }
 
@@ -74,16 +73,20 @@ export class AdminDiscountComponent implements OnInit {
     if (this.editStatus) {
       this.discountService.update(this.discountForm.value, this.currentDiscountId).subscribe(() => {
         this.loadDiscounts();
+        this.toastr.success('Discount successfully updated');
       })
     } else {
       this.discountService.create(this.discountForm.value).subscribe(() => {
         this.loadDiscounts();
+        this.toastr.success('Discount successfully created');
       })
     }
     this.editStatus = false;
     this.discountForm.reset();
     this.isUploaded = false;
     this.uploadPercent = 0;
+    this.imagePath = 'null';
+
   }
 
   getDiscount(): void {
@@ -92,7 +95,14 @@ export class AdminDiscountComponent implements OnInit {
     })
   }
 
-  editDiscount(discount: IDiscountResponce): void {
+  getOneDiscount(id: number): void {
+    this.discountService.getOne(id).subscribe(data => {
+      this.adminDiscounts
+    })
+  }
+
+
+  editDiscount(discount: IDiscountResponse): void {
     this.discountForm.patchValue({
       date: this.currentDate,
       name: discount.name,
@@ -102,12 +112,15 @@ export class AdminDiscountComponent implements OnInit {
     })
     this.editStatus = true;
     this.currentDiscountId = discount.id;
+    console.log(this.currentDiscountId);
+
     this.isUploaded = true;
   }
 
-  deleteDiscount(discount: IDiscountResponce): void {
+  deleteDiscount(discount: IDiscountResponse): void {
     this.discountService.delete(discount.id).subscribe(() => {
       this.loadDiscounts();
+      this.toastr.success('Discount successfully deleted');
     })
   }
 
@@ -118,8 +131,6 @@ export class AdminDiscountComponent implements OnInit {
         this.discountForm.patchValue({
           imagePath: data
         });
-        console.log(data);
-
         this.isUploaded = true;
       })
       .catch(err => {
@@ -151,7 +162,6 @@ export class AdminDiscountComponent implements OnInit {
   deleteImage(): void {
     const task = ref(this.storage, this.valueByControl('imagePath'));
     deleteObject(task).then(() => {
-      console.log('file deleted');
       this.isUploaded = false;
       this.uploadPercent = 0;
       this.discountForm.patchValue({
@@ -167,7 +177,4 @@ export class AdminDiscountComponent implements OnInit {
   changeStatus(): void {
     this.adminDiscountStatus = !this.adminDiscountStatus;
   }
-
-
-
 }

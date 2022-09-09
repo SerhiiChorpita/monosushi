@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OfferContractComponent } from './pages/offer-contract/offer-contract.component';
 import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delivery-and-payment.component';
+import { ToastrModule } from 'ngx-toastr';
 
 import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -60,6 +62,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
@@ -68,7 +71,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HttpClientModule,
     HttpClientJsonpModule,
     NgbModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    ToastrModule.forRoot({ positionClass: 'inline' })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,60 @@
+@import "../../shared/style/variables";
+
+.card {
+  width: 80%;
+  border: none;
+  margin: 50px auto;
+  text-align: justify;
+  font-size: 26px;
+}
+.img-mod,
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 70%;
+  width: fit-content;
+  margin: 0 auto;
+  height: 150px;
+  overflow: hidden;
+}
+.img-mod {
+  flex-flow: column nowrap;
+  background-color: $mainColor;
+  background-image: url(../../../assets/sushi-image/home/bg-monosushi-logo.svg),
+    url(../../../assets/sushi-image/home/bg-monosushi-logo.svg);
+  background-repeat: repeat;
+  background-position: 0 0, 190px -52px;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  line-height: normal;
+  padding: 0 20px;
+  &__line {
+    display: block;
+    width: 35%;
+    height: 2%;
+    border-radius: 25%;
+    background-color: black;
+    margin: 10px;
+  }
+  p {
+    font-size: 45px;
+    font-weight: bold;
+  }
+}
+.card-body {
+  text-align: justify;
+  height: fit-content;
+}
+
+@media all and(max-width:768px) {
+  .card {
+    width: 100%;
+    font-size: 20px;
+  }
+  .img-mod,
+  .card-body {
+    width: 90%;
+  }
+}
