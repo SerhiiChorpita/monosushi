@@ -16,7 +16,7 @@
   top: 0;
   left: 0;
   z-index: 97;
-
+  box-shadow: 0px 1px 10px 0px #c5c5c5;
   &__1 {
     display: flex;
     justify-content: center;
@@ -323,7 +323,7 @@
   align-items: center;
   width: 146px;
   height: 95px;
-  padding-right: 0;
+  padding: 0;
   background-color: white;
   z-index: 1;
   border: none;
@@ -337,13 +337,14 @@
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
-    margin: 0 0.7rem 0.4rem 0.7rem;
+    margin: 0 0 0 5px;
   }
   &__count-cash {
     display: flex;
     align-items: center;
     width: 50%;
     height: 100%;
+    margin-right: 10px;
     span {
       padding-left: 3px;
     }
@@ -359,7 +360,7 @@
       background-color: $mainColor;
       position: relative;
       bottom: 0.7rem;
-      right: 4.2rem;
+      right: 1.2rem;
       font-size: 12px;
     }
   }
@@ -393,7 +394,7 @@
   min-width: 664px;
   max-width: 700px;
   height: auto;
-  min-height: 316px;
+  min-height: 216px;
   max-height: calc(100vh - 110px);
   background-color: white;
   position: fixed;
@@ -488,9 +489,108 @@
       border-radius: 15px;
       background-color: lightgrey;
       border: none;
+      transition: all 0.35s;
+      &:hover {
+        border: 2px solid lightgrey;
+        background-color: rgb(255, 241, 47, 0.5);
+        outline: 3px solid rgba(255, 241, 47, 0.253);
+      }
+      &:active {
+        border: 2px solid lightgrey;
+        background-color: rgb(255, 241, 47);
+      }
     }
   }
 }
+.product-to-buy {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 95%;
+  height: 100px;
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 47px;
+    img {
+      display: block;
+      height: 100%;
+    }
+  }
+  &__name {
+    text-align: center;
+  }
+  &__order {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 50%;
+    button {
+      border: none;
+      background: none;
+    }
+    &__1,
+    &__2,
+    &__3 {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      width: 20%;
+      height: 100%;
+    }
+    &__2 {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      border: 1px solid lightgrey;
+      border-radius: 15px;
+      width: 40%;
+      input {
+        text-align: center;
+        width: 40%;
+        border: none;
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        height: 80%;
+        font-size: 26px;
+        &:hover {
+          border-radius: 15px;
+          background-color: $mainColor;
+        }
+      }
+    }
+    &__3 {
+      justify-content: center;
+      width: 14%;
+      height: 70%;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      background-image: url(../../../assets/images/trash-alt.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 71%;
+      font-weight: bold;
+      font-size: 15px;
+      transition: active 0.5s;
+      &:hover {
+        border: 2px solid $mainColor;
+      }
+      &:active {
+        border: 2px solid $mainColor;
+        background-color: rgba(255, 0, 0, 0.5);
+      }
+    }
+  }
+}
+
 .bg-gray-2 {
   visibility: hidden;
   opacity: 0;
@@ -763,8 +863,13 @@
     }
     &__count {
       &__circle {
-        right: 5rem;
+        right: 2rem;
       }
+    }
+    &__count-cash {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
   .bg-gray-1 {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IDiscountResponse } from 'src/app/shared/interface/disount/discount';
-import { DiscountService } from 'src/app/shared/services/disount/discount.service';
+import { DiscountService } from 'src/app/shared/services/discount/discount.service';
 
 @Component({
   selector: 'app-discount-info',
@@ -19,15 +19,15 @@ export class DiscountInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOneDiscount();
+    this.activatedRoute.data.subscribe(response => {
+      this.discount = response['discountInfo']
+    })
   }
 
   getOneDiscount(): void {
     const DISCOUNT_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-
     this.discountService.getOne(DISCOUNT_ID).subscribe(data => {
       this.discount = data;
-      console.log(data);
-
     })
   }
 

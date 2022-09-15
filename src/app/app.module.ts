@@ -35,6 +35,7 @@ import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delive
 import { ToastrModule } from 'ngx-toastr';
 
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     AdminOrdersComponent,
     DiscountInfoComponent,
     OfferContractComponent,
-    DeliveryAndPaymentComponent
+    DeliveryAndPaymentComponent,
+    ProductInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,10 @@
+<nav class="ms-4 mt-4" aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a [routerLink]="[ '/home' ]">Головна</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="[ '/discount' ]">Акції</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ discount.name | titlecase }}</li>
+    </ol>
+</nav>
 <ng-container *ngIf="discount">
     <div class="container-fluid">
         <div class="col-12 mt-3">

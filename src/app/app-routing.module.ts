@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { DiscountComponent } from './pages/discount/discount.component';
 import { DiscountInfoComponent } from './pages/discount-info/discount-info.component';
 import { ProductComponent } from './pages/product/product.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { RollsComponent } from './pages/rolls/rolls.component';
 import { SetComponent } from './pages/set/set.component';
 import { DrinksComponent } from './pages/drinks/drinks.component';
@@ -19,20 +20,33 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { OfferContractComponent } from './pages/offer-contract/offer-contract.component';
+import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
+import { DiscountResolver } from './shared/services/discount/discount.resolver';
 
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'discount', component: DiscountComponent },
-  { path: 'discount/:id', component: DiscountInfoComponent },
   {
-    path: 'product', component: ProductComponent, children: [
+    path: 'discount/:id', component: DiscountInfoComponent,
+    resolve: {
+      discountInfo: DiscountResolver
+    }
+  },
+  {
+    path: 'product/:category', component: ProductComponent, children: [
       { path: 'rolls', component: RollsComponent },
       { path: 'set', component: SetComponent },
       { path: 'drinks', component: DrinksComponent },
       { path: 'sauces', component: SaucesComponent }
     ]
+  },
+  {
+    path: 'product/:category/:id', component: ProductInfoComponent,
+    resolve: {
+      productInfo: ProductInfoResolver
+    }
   },
   { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
   { path: 'about-us', component: AboutUsComponent },

@@ -82,10 +82,10 @@
                     <div class="basket-in__img">
                         <div class="bascket-before" [style]="toolBasketBg"></div>
                     </div>
-                    <div class="basket-in__count-cash"><strong>{{countCash}}</strong><span>грн</span></div>
                     <div class="basket-in__count">
                         <div class="basket-in__count__circle" [style]="toolcountArtBg">{{countArticle}}</div>
                     </div>
+                    <div class="basket-in__count-cash"><strong>{{ total }}</strong><span>грн</span></div>
                 </button>
             </div>
         </nav>
@@ -93,22 +93,46 @@
 </div>
 <div class="bg-gray-1" [style]="visibility1" (click)="basketToggle()"></div>
 <div class="basket-out" [style]="visibility1">
-    <div class=" basket-out__block-1">
-
-        <div class="nothing-here">
-            <div></div>
-            <p><strong>Кошик порожній</strong></p>
-            <button type="button" class="to-home-page-btn"><strong>ПЕРЕЙТИ ДО КАТАЛОГУ</strong></button>
-        </div>
-
-        <div class="product-to-buy"></div>
-
+    <div class="basket-out__block-1">
+        <ng-container *ngIf="basket.length < 1">
+            <div class="nothing-here">
+                <div></div>
+                <p><strong>Кошик порожній</strong></p>
+                <button type="button" class="to-home-page-btn" [routerLink]="['/home']"
+                    (click)="basketToggle()"><strong>ПЕРЕЙТИ ДО
+                        КАТАЛОГУ</strong></button>
+            </div>
+        </ng-container>
+        <ng-container *ngFor="let product of basket">
+            <div class="product-to-buy">
+                <div class="product-to-buy__img col-3">
+                    <img [src]="product.imagePath">
+                </div>
+                <div class="product-to-buy__name col-4">
+                    <span><strong>{{product.name}}</strong></span>
+                </div>
+                <div class="product-to-buy__order">
+                    <div class="product-to-buy__order__2">
+                        <button (click)="productCount(product, false)" class="decrement">-</button>
+                        <input [value]="product.count" type="text" readonly class="product-qty">
+                        <button (click)="productCount(product, true)" class="increment">+</button>
+                    </div>
+                    <div class="product-to-buy__order__1">
+                        <strong><span>{{product.price * product.count}}</span></strong>
+                        <span> грн</span>
+                    </div>
+                    <div class="product-to-buy__order__3">
+                        <button></button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
     </div>
     <div class="basket-out__block-2">
         <div>
-            <p>Сума: <strong>{{ countCash }}</strong> грн</p>
+            <p>Сума: <strong>{{ total }}</strong> грн</p>
         </div>
-        <button type="button" [disabled]=""><strong>ОФОРМИТИ ЗАМОВЛЕННЯ</strong></button>
+        <button type="button" [disabled]="basket.length < 1"><strong>ОФОРМИТИ ЗАМОВЛЕННЯ</strong></button>
     </div>
 </div>
 <div class="bg-gray-2" [style]="visibility2" (click)="callToggle()"></div>

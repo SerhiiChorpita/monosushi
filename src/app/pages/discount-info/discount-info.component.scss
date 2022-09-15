@@ -47,6 +47,15 @@
   text-align: justify;
   height: fit-content;
 }
+.breadcrumb {
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      color: $mainColor;
+    }
+  }
+}
 
 @media all and(max-width:768px) {
   .card {

@@ -1,0 +1,46 @@
+<nav class="ms-4 mt-4" aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a [routerLink]="[ '/home' ]">Головна</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="[ '/product/'+currentProduct.category.path ]">{{
+                currentProduct.category.name }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ currentProduct.name }}</li>
+    </ol>
+</nav>
+<div class="container p-5 pt-0 d-flex align-items-center" style="height: 85vh;">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="mb-3">
+                <div class="row g-0 d-flex justify-content-between">
+                    <div class="col-md-6">
+                        <img [src]="currentProduct.imagePath" class="img-fluid rounded-start"
+                            [alt]="currentProduct.name">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card-body">
+                            <h2 class="card-title mb-4">{{ currentProduct.name }}</h2>
+                            <p class="card-text"><span class="text-color">Склад: </span>{{
+                                currentProduct.ingredients }}
+                            </p>
+                            <p class="card-text"><span class="text-color">Вага: </span>{{ currentProduct.weight }}
+                            </p>
+                            <div class="roll-product__order">
+                                <div class="roll-product__order__1">
+                                    <strong><span>{{ currentProduct.price * currentProduct.count }}</span></strong>
+                                    <span> грн</span>
+                                </div>
+                                <div class="roll-product__order__2">
+                                    <button (click)="productCount(currentProduct, false)" class="decrement">-</button>
+                                    <input [value]="currentProduct.count" type="text" readonly class="product-qty">
+                                    <button (click)="productCount(currentProduct, true)" class="increment">+</button>
+                                </div>
+                                <div class="roll-product__order__3">
+                                    <button (click)="addToBasket(currentProduct)">Замовити</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

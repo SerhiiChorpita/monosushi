@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IDiscountResponse } from 'src/app/shared/interface/disount/discount';
-import { DiscountService } from 'src/app/shared/services/disount/discount.service';
+import { DiscountService } from 'src/app/shared/services/discount/discount.service';
 
 @Component({
   selector: 'app-discount',

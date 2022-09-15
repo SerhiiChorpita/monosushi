@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IProductResponse } from 'src/app/shared/interface/products/products';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public countCash: number = 0;
-  public countArticle: number = 0;
 
   public basketCheck = true;
   public visibility1!: string;
   public toolBasketBg!: string;
   public toolcountArtBg!: string;
+
+  public total = 0;
+  public countArticle: number = 0;
+  public basket: Array<IProductResponse> = [];
 
   public willCallCheck = false;
   public visibility2!: string;
@@ -24,12 +28,44 @@ export class HeaderComponent implements OnInit {
   public drpdwnMenu = false;
   public toolDrpdwnMenu: string = 'background-image: url(../../../assets/images/bars.svg);';
 
-  constructor() { }
+  public scrolDown = false;
+  constructor(
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
+    this.loadBasket();
+    this.updateBasket();
     this.basketToggle();
   }
 
+  loadBasket(): void {
+    if (localStorage.length > 0 && localStorage.getItem('basket')) {
+      this.basket = JSON.parse(localStorage.getItem('basket') as string)
+    }
+    this.getTotalPrice();
+  }
+
+  getTotalPrice(): void {
+    this.total = this.basket.reduce((total: number, prod: IProductResponse) =>
+      total + prod.count * prod.price, 0)
+    this.countArticle = this.basket.reduce((countArticle: number, prod: IProductResponse) =>
+      countArticle + prod.count, 0)
+  }
+
+  updateBasket(): void {
+    this.orderService.changeBasket.subscribe(() => {
+      this.loadBasket();
+    })
+  }
+
+  productCount(product: IProductResponse, value: boolean): void {
+    if (value && product.count < 100) {
+      ++product.count
+    } else if (!value && product.count > 1) {
+      --product.count
+    }
+  }
 
   basketToggle(): void {
     this.basketCheck = !this.basketCheck;
@@ -85,3 +121,4 @@ export class HeaderComponent implements OnInit {
     });
   }
 }
+

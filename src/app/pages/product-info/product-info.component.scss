@@ -1,0 +1,102 @@
+@import "../../shared/style/variables";
+
+@media all and(max-width:396px) {
+  .p-5 {
+    padding: 1rem !important;
+  }
+}
+
+.roll-product {
+  cursor: pointer;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 310px;
+  height: 450px;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  transition: all 0.35s;
+  &__order {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 45px;
+    button {
+      border: none;
+      background: none;
+    }
+    &__1,
+    &__2,
+    &__3 {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      width: auto;
+      height: 100%;
+    }
+    &__1 {
+      padding-left: 5px;
+    }
+    &__2 {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      justify-self: right;
+      border: 1px solid lightgrey;
+      border-radius: 15px;
+      width: 25%;
+      input {
+        text-align: center;
+        width: 40%;
+        border: none;
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 80%;
+        font-size: 26px;
+        &:hover {
+          border-radius: 15px;
+          background-color: $mainColor;
+        }
+      }
+    }
+    &__3 {
+      justify-content: center;
+      width: 40%;
+      height: 90%;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      background-color: $mainColor;
+      font-weight: bold;
+      font-size: 15px;
+      &:hover {
+        border: 2px solid $mainColor;
+        background: none;
+      }
+    }
+  }
+}
+.text-color {
+  font-weight: bold;
+  color: $mainColor;
+}
+.pos-start {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.breadcrumb {
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      color: $mainColor;
+    }
+  }
+}

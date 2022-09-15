@@ -1,38 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interface/products/products';
 import { OrderService } from 'src/app/shared/services/order/order.service';
-import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-product-info',
+  templateUrl: './product-info.component.html',
+  styleUrls: ['./product-info.component.scss']
 })
-export class ProductComponent implements OnInit {
-  public select1 = true;
-  public select2 = false;
-  public select3 = false;
-  public select4 = false;
-  public select5 = false;
-  public select6 = false;
-  public select7 = false;
+export class ProductInfoComponent implements OnInit {
 
-  public inc = false;
-
-  public productStorage: Array<IProductResponse> = [];
+  public currentProduct!: IProductResponse;
 
   constructor(
-    private productService: ProductService,
+    private activatedRoute: ActivatedRoute,
     private orderService: OrderService
   ) { }
 
   ngOnInit(): void {
-    this.loadProduct()
-  }
-
-  loadProduct() {
-    this.productService.getAll().subscribe(data => {
-      this.productStorage = data;
+    this.scrollToTop();
+    this.activatedRoute.data.subscribe(response => {
+      this.currentProduct = response['productInfo']
     })
   }
 
@@ -61,14 +49,11 @@ export class ProductComponent implements OnInit {
     product.count = 1;
     this.orderService.changeBasket.next(true);
   }
-
-  tableSelect(): void {
-    this.select1 = false;
-    this.select2 = false;
-    this.select3 = false;
-    this.select4 = false;
-    this.select5 = false;
-    this.select6 = false;
-    this.select7 = false;
+  scrollToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 }

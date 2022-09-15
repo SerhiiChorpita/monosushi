@@ -43,25 +43,28 @@
             <ng-container *ngFor="let product of productStorage; index as i">
                 <div class="roll-product m-2">
                     <div class="roll-product__img">
-                        <img [src]="product.imagePath">
+                        <img [routerLink]="[ '/product/'+product.category.path, product.id ]" [src]="product.imagePath">
                     </div>
                     <div class="roll-product__name">
-                        <div><span>{{product.name}}</span></div>
+                        <div [routerLink]="[ '/product/'+product.category.path, product.id ]">
+                            <span>{{product.name}}</span>
+                        </div>
                     </div>
                     <div class="roll-product__weight">
                         <div class="roll-product__weight__1"><span>{{product.ingredients}}</span></div>
                         <div class="roll-product__weight__2"><strong><span>{{product.weight}}</span></strong></div>
                     </div>
                     <div class="roll-product__order">
-                        <div class="roll-product__order__1"><strong><span>{{product.price}}</span></strong>
+                        <div class="roll-product__order__1"><strong><span>{{product.price *
+                                    product.count}}</span></strong>
                             грн<span></span></div>
                         <div class="roll-product__order__2">
-                            <button class="decrement">-</button>
+                            <button (click)="productCount(productStorage[i], false)" class="decrement">-</button>
                             <input [value]="product.count" type="text" readonly class="product-qty">
-                            <button class="increment">+</button>
+                            <button (click)="productCount(productStorage[i], true)" class="increment">+</button>
                         </div>
                         <div class="roll-product__order__3">
-                            <button>Замовити</button>
+                            <button (click)="addToBasket(productStorage[i])">Замовити</button>
                         </div>
                     </div>
                 </div>

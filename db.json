@@ -22,10 +22,15 @@
       "category": {
         "id": 1,
         "name": "Роли",
-        "path": "rols",
+        "path": "rolls",
         "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=dba2d7c9-4ec8-4265-9185-6cb5a972df0d"
       },
-      "path": "rolls",
+      "path": {
+        "id": 1,
+        "name": "Роли",
+        "path": "rolls",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=dba2d7c9-4ec8-4265-9185-6cb5a972df0d"
+      },
       "name": "Філадельфія в кунжуті",
       "ingredients": "Рис, крем сир, огірок, лосось, кунжут",
       "weight": "240г",
