@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HeaderComponent } from '../components/header/header.component';
+import { AccountService } from '../shared/services/account/account.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,11 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private accountService: AccountService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  logout(): void {
+    this.router.navigate(['/']);
+    localStorage.removeItem('currentUser');
+    this.accountService.isUserLogin$.next(true);
+  }
 
   scrollToTop() {
     window.scroll({

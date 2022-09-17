@@ -50,7 +50,7 @@
                                     (blur)="drpdwnMenu=true;changeValue()"></button>
                                 <div class="drpdwn-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                     <button ngbDropdownItem [routerLink]="'/delivery-and-payment'"
-                                        (click)=" scrollToTop()">Доставка та
+                                        (click)="scrollToTop()">Доставка та
                                         оплата</button>
                                     <button ngbDropdownItem [routerLink]="'/about-us'" (click)=" scrollToTop()">Про
                                         нас</button>
@@ -73,8 +73,15 @@
                 </div>
                 <div class="container admin-in">
                     <a href="tel:097878098977" class="cell-phone"></a>
-                    <button type="button" class="btn admin-office" [routerLink]="'/admin'"
-                        (click)=" scrollToTop()"></button>
+                    <ng-container *ngIf="!loginAdminCheck">
+                        <button type="button" class="btn admin-office" (click)="loginToggle();initAuthForm()"
+                            (click)=" scrollToTop()"></button>
+                    </ng-container>
+                    <ng-container *ngIf="loginAdminCheck">
+                        <button type="button" class="btn admin-office" [routerLink]="'/admin'" (click)=" scrollToTop()"
+                            style="line-height: 1px;">*</button>
+                    </ng-container>
+
                     <button type="button" class="btn drpdwn-2" (click)="sideMenuToggle()"
                         [style]="toolsideMenu"></button>
                 </div>
@@ -135,7 +142,10 @@
         <button type="button" [disabled]="basket.length < 1"><strong>ОФОРМИТИ ЗАМОВЛЕННЯ</strong></button>
     </div>
 </div>
-<div class="bg-gray-2" [style]="visibility2" (click)="callToggle()"></div>
+
+<div class="bg-gray-2" [style]="willCallCheck?visibility2:visibility4"
+    (click)="willCallCheck?callToggle():loginToggle()"></div>
+
 <div class="call-bg" [style]="visibility2">
     <div class="form-to-call" [style]="visibility2">
         <div class="form-to-call__close-box">
@@ -160,6 +170,34 @@
         </div>
     </div>
 </div>
+
+<ng-container *ngIf="loginModalCheck && !loginAdminCheck">
+    <div class="call-bg" [style]="visibility4">
+        <div class="form-to-login" [style]="visibility4">
+            <div class="form-to-login__close-box">
+                <button type="button" (click)="loginToggle()">x</button>
+            </div>
+            <div class="form-to-login__box">
+                <div class="form-to-login__text-box">
+                    <p class="form-to-login__text-box__t1">Вхід в кабінет</p>
+                </div>
+                <form [formGroup]="authForm" (ngSubmit)="login();loginToggle()">
+                    <div class="mt-5 mb-3">
+                        <input formControlName="email" type="email" class="form-control" aria-describedby="emailHelp"
+                            placeholder="Ваша почтова адреса">
+                    </div>
+                    <div class="mb-3">
+                        <input formControlName="password" type="password"
+                            class="input inputmask form-control input inputmask" placeholder="Ваш пароль">
+                    </div>
+                    <button [disabled]="authForm.invalid" type="submit" class="btn btn-primary">УВІЙТИ В
+                        КАБІНЕТ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
 <div class="side-menu" [style]="visibility3">
     <div class="side-menu__box1">
         <div class="container-fluid d-flex flex-row sauces-2">

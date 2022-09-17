@@ -614,7 +614,8 @@
   transform: translate(-50%, -50%);
   z-index: 99;
 }
-.form-to-call {
+.form-to-call,
+.form-to-login {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -693,6 +694,11 @@
         border: 2px solid $mainColor;
       }
     }
+  }
+}
+.form-to-login {
+  &__box {
+    justify-content: start;
   }
 }
 

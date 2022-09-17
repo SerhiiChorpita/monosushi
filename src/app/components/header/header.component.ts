@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ROLE } from 'src/app/shared/constans/role.constant';
 import { IProductResponse } from 'src/app/shared/interface/products/products';
+import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
@@ -25,18 +29,67 @@ export class HeaderComponent implements OnInit {
   public visibility3!: string;
   public toolsideMenu: string = 'background-image: url(../../../assets/images/bars.svg);';
 
+  public loginModalCheck = false;
+  public loginAdminCheck!: boolean;
+  public visibility4!: string;
+  public authForm!: FormGroup;
+
   public drpdwnMenu = false;
   public toolDrpdwnMenu: string = 'background-image: url(../../../assets/images/bars.svg);';
 
   public scrolDown = false;
+
   constructor(
-    private orderService: OrderService
+    private orderService: OrderService,
+    private accountService: AccountService,
+    private fb: FormBuilder,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
     this.basketToggle();
+    this.checkLogin();
+  }
+
+  initAuthForm(): void {
+    this.authForm = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]]
+    })
+  }
+
+  login(): void {
+    this.accountService.login(this.authForm.value).subscribe(data => {
+      if (data && data.length > 0) {
+        const user = data[0];
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.accountService.isUserLogin$.next(true);
+        if (user && user.role === ROLE.USER) {
+          this.route.navigate(['/account']);
+          this.loginAdminCheck = false;
+        } else if (user && user.role === ROLE.ADMIN) {
+          this.route.navigate(['/admin']);
+          this.loginAdminCheck = true;
+        }
+      }
+    })
+  }
+
+  checkLogin(): boolean {
+    this.accountService.isUserLogin$.subscribe(() => {
+      this.checkLogin();
+    })
+    if (localStorage.getItem('currentUser')) {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+      if (currentUser && currentUser.role === ROLE.ADMIN) {
+        this.loginAdminCheck = true;
+      } else {
+        this.loginAdminCheck = false;
+      }
+    }
+    return this.loginAdminCheck;
   }
 
   loadBasket(): void {
@@ -90,6 +143,18 @@ export class HeaderComponent implements OnInit {
       document.body.style.overflow = 'hidden';
     } else {
       this.visibility2 = '';
+      document.body.style.overflow = 'visible';
+    }
+  }
+  loginToggle(): void {
+    this.loginModalCheck = !this.loginModalCheck;
+    if (this.loginModalCheck) {
+      this.visibility4 = 'display:flex; opacity: 1; visibility: visible;';
+      this.visibility3 = '';
+      this.sideMenuCheck = false;
+      document.body.style.overflow = 'hidden';
+    } else {
+      this.visibility4 = '';
       document.body.style.overflow = 'visible';
     }
   }

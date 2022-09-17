@@ -9,7 +9,7 @@
                 (click)="scrollToTop()">Продукти</button>
             <button class="nav-link dtn-nav" type="button" [routerLink]="[ 'orders' ]" routerLinkActive="active-plus"
                 (click)="scrollToTop()">Замовлення</button>
-            <button class="exit-btn" type="button" (click)="scrollToTop()">Вихід</button>
+            <button class="exit-btn" type="button" (click)="scrollToTop();logout()">Вихід</button>
         </div>
         <div class="tab-content w-100" id="v-pills-tabContent">
             <router-outlet></router-outlet>

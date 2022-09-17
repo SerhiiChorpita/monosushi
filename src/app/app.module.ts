@@ -37,6 +37,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 
+import { AccountComponent } from './account/account.component';
+import { UserHistoryComponent } from './account/user-history/user-history.component';
+import { UserPasswordComponent } from './account/user-password/user-password.component';
+import { UserComponent } from './account/user/user.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
     DiscountInfoComponent,
     OfferContractComponent,
     DeliveryAndPaymentComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    AccountComponent,
+    UserHistoryComponent,
+    UserPasswordComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
