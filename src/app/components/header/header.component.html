@@ -73,19 +73,23 @@
                 </div>
                 <div class="container admin-in">
                     <a href="tel:097878098977" class="cell-phone"></a>
-                    <ng-container *ngIf="!loginAdminCheck">
+                    <ng-container *ngIf="!loginAdminCheck && !loginUserCheck">
                         <button type="button" class="btn admin-office" (click)="loginToggle();initAuthForm()"
                             (click)=" scrollToTop()"></button>
                     </ng-container>
-                    <ng-container *ngIf="loginAdminCheck">
+                    <ng-container *ngIf="loginAdminCheck && !loginUserCheck">
                         <button type="button" class="btn admin-office" [routerLink]="'/admin'" (click)=" scrollToTop()"
                             style="line-height: 1px;">*</button>
+                    </ng-container>
+                    <ng-container *ngIf="loginUserCheck && !loginAdminCheck">
+                        <button type="button" class="btn admin-office" [routerLink]="'/account'"
+                            (click)=" scrollToTop()" style="line-height: 1px;"></button>
                     </ng-container>
 
                     <button type="button" class="btn drpdwn-2" (click)="sideMenuToggle()"
                         [style]="toolsideMenu"></button>
                 </div>
-                <button type="button" class="container basket-in " (click)="basketToggle()">
+                <button type="button" class="container basket-in" (click)="basketToggle()">
                     <div class="basket-in__img">
                         <div class="bascket-before" [style]="toolBasketBg"></div>
                     </div>
@@ -139,7 +143,9 @@
         <div>
             <p>Сума: <strong>{{ total }}</strong> грн</p>
         </div>
-        <button type="button" [disabled]="basket.length < 1"><strong>ОФОРМИТИ ЗАМОВЛЕННЯ</strong></button>
+        <button type="button" [disabled]="basket.length < 1" [routerLink]="'/checkout'"
+            (click)="basketToggle()"><strong>ОФОРМИТИ
+                ЗАМОВЛЕННЯ</strong></button>
     </div>
 </div>
 
@@ -171,7 +177,7 @@
     </div>
 </div>
 
-<ng-container *ngIf="loginModalCheck && !loginAdminCheck">
+<ng-container *ngIf="loginModalCheck && !loginAdminCheck && !loginUserCheck">
     <div class="call-bg" [style]="visibility4">
         <div class="form-to-login" [style]="visibility4">
             <div class="form-to-login__close-box">
@@ -183,7 +189,7 @@
                 </div>
                 <form [formGroup]="authForm" (ngSubmit)="login();loginToggle()">
                     <div class="mt-5 mb-3">
-                        <input formControlName="email" type="email" class="form-control" aria-describedby="emailHelp"
+                        <input formControlName="email" type="email" class="form-control" autocomplete="email"
                             placeholder="Ваша почтова адреса">
                     </div>
                     <div class="mb-3">

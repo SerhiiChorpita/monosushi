@@ -1,0 +1,9 @@
+@import "../../shared/style/variables";
+.link-a {
+  font-weight: bold;
+  color: $mainColor;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

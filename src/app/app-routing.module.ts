@@ -62,6 +62,7 @@ const routes: Routes = [
       { path: 'office', component: UserComponent },
       { path: 'history', component: UserHistoryComponent },
       { path: 'password', component: UserPasswordComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'office' },
     ]
   },
   {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { HeaderComponent } from '../components/header/header.component';
 import { AccountService } from '../shared/services/account/account.service';
 
@@ -12,7 +13,8 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +24,7 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['/']);
     localStorage.removeItem('currentUser');
     this.accountService.isUserLogin$.next(true);
+    this.toastr.success('You are logged out');
   }
 
   scrollToTop() {

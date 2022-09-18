@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ROLE } from 'src/app/shared/constans/role.constant';
 import { IProductResponse } from 'src/app/shared/interface/products/products';
 import { AccountService } from 'src/app/shared/services/account/account.service';
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit {
   public toolBasketBg!: string;
   public toolcountArtBg!: string;
 
-  public total = 0;
+  public total: number = 0;
   public countArticle: number = 0;
   public basket: Array<IProductResponse> = [];
 
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit {
 
   public loginModalCheck = false;
   public loginAdminCheck!: boolean;
+  public loginUserCheck!: boolean;
   public visibility4!: string;
   public authForm!: FormGroup;
 
@@ -43,7 +45,8 @@ export class HeaderComponent implements OnInit {
     private orderService: OrderService,
     private accountService: AccountService,
     private fb: FormBuilder,
-    private route: Router
+    private route: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +54,9 @@ export class HeaderComponent implements OnInit {
     this.updateBasket();
     this.basketToggle();
     this.checkLogin();
+    this.accountService.isUserLogin$.subscribe(() => {
+      this.checkLogin();
+    })
   }
 
   initAuthForm(): void {
@@ -69,27 +75,30 @@ export class HeaderComponent implements OnInit {
         if (user && user.role === ROLE.USER) {
           this.route.navigate(['/account']);
           this.loginAdminCheck = false;
+          this.loginUserCheck = true;
+          this.toastr.success(`You are logged in. Welcome ${user.fullName}`);
         } else if (user && user.role === ROLE.ADMIN) {
           this.route.navigate(['/admin']);
+          this.loginUserCheck = false;
           this.loginAdminCheck = true;
+          this.toastr.success(`You are logged in. Welcome ${ROLE.ADMIN}`);
         }
       }
     })
   }
 
-  checkLogin(): boolean {
-    this.accountService.isUserLogin$.subscribe(() => {
-      this.checkLogin();
-    })
+  checkLogin(): void {
     if (localStorage.getItem('currentUser')) {
       const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
       if (currentUser && currentUser.role === ROLE.ADMIN) {
         this.loginAdminCheck = true;
-      } else {
-        this.loginAdminCheck = false;
+      } else if (currentUser && currentUser.role === ROLE.USER) {
+        this.loginUserCheck = true;
       }
+    } else {
+      this.loginAdminCheck = false;
+      this.loginUserCheck = false;
     }
-    return this.loginAdminCheck;
   }
 
   loadBasket(): void {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ILogin } from '../../interface/account/account.interface';
+import { IChangePassword } from '../../interface/account/changePassword.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,9 @@ export class AccountService {
 
   login(credential: ILogin): Observable<any> {
     return this.http.get(`${this.api.auth}?email=${credential.email}&password${credential.password}`)
+  }
+  changePass(credential: IChangePassword): Observable<any> {
+    return this.http.get(`${this.api.auth}?password${credential.password}`)
   }
 
 }
