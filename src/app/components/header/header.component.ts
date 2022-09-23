@@ -6,6 +6,9 @@ import { ROLE } from 'src/app/shared/constans/role.constant';
 import { IProductResponse } from 'src/app/shared/interface/products/products';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+
 
 @Component({
   selector: 'app-header',
@@ -41,12 +44,15 @@ export class HeaderComponent implements OnInit {
 
   public scrolDown = false;
 
+
   constructor(
     private orderService: OrderService,
     private accountService: AccountService,
     private fb: FormBuilder,
     private route: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dialog: MatDialog
+
   ) { }
 
   ngOnInit(): void {
@@ -84,6 +90,16 @@ export class HeaderComponent implements OnInit {
           this.toastr.success(`You are logged in. Welcome ${ROLE.ADMIN}`);
         }
       }
+    })
+  }
+
+  openLoginDialog(): void {
+    this.dialog.open(AuthDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog',
+      autoFocus: false
+    }).afterClosed().subscribe(result => {
+      console.log(result);
     })
   }
 
@@ -143,6 +159,7 @@ export class HeaderComponent implements OnInit {
       document.body.style.overflow = 'visible';
     }
   }
+
   callToggle(): void {
     this.willCallCheck = !this.willCallCheck;
     if (this.willCallCheck) {
@@ -155,18 +172,20 @@ export class HeaderComponent implements OnInit {
       document.body.style.overflow = 'visible';
     }
   }
+
   loginToggle(): void {
-    this.loginModalCheck = !this.loginModalCheck;
-    if (this.loginModalCheck) {
-      this.visibility4 = 'display:flex; opacity: 1; visibility: visible;';
-      this.visibility3 = '';
-      this.sideMenuCheck = false;
-      document.body.style.overflow = 'hidden';
-    } else {
-      this.visibility4 = '';
-      document.body.style.overflow = 'visible';
-    }
+    //   this.loginModalCheck = !this.loginModalCheck;
+    //   if (this.loginModalCheck) {
+    //     this.visibility4 = 'display:flex; opacity: 1; visibility: visible;';
+    //     this.visibility3 = '';
+    //     this.sideMenuCheck = false;
+    //     document.body.style.overflow = 'hidden';
+    //   } else {
+    //     this.visibility4 = '';
+    //     document.body.style.overflow = 'visible';
+    //   }
   }
+
   sideMenuToggle(): void {
     this.sideMenuCheck = !this.sideMenuCheck;
     if (this.sideMenuCheck) {
@@ -179,6 +198,7 @@ export class HeaderComponent implements OnInit {
       this.toolsideMenu = 'background-image: url(../../../assets/images/bars.svg);';
     }
   }
+
   changeValue(): void {
     this.drpdwnMenu = !this.drpdwnMenu;
     if (this.drpdwnMenu) {
@@ -187,6 +207,7 @@ export class HeaderComponent implements OnInit {
       this.toolDrpdwnMenu = 'background-image:url(../../../assets/images/bars.svg);';
     }
   }
+
   scrollToTop() {
     window.scroll({
       top: 0,

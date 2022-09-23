@@ -74,8 +74,9 @@
                 <div class="container admin-in">
                     <a href="tel:097878098977" class="cell-phone"></a>
                     <ng-container *ngIf="!loginAdminCheck && !loginUserCheck">
-                        <button type="button" class="btn admin-office" (click)="loginToggle();initAuthForm()"
-                            (click)=" scrollToTop()"></button>
+                        <!-- <button type="button" class="btn admin-office" (click)="loginToggle();initAuthForm()"
+                            (click)=" scrollToTop()"></button> -->
+                        <button type="button" class="btn admin-office" (click)="openLoginDialog()"></button>
                     </ng-container>
                     <ng-container *ngIf="loginAdminCheck && !loginUserCheck">
                         <button type="button" class="btn admin-office" [routerLink]="'/admin'" (click)=" scrollToTop()"
@@ -194,7 +195,8 @@
                     </div>
                     <div class="mb-3">
                         <input formControlName="password" type="password"
-                            class="input inputmask form-control input inputmask" placeholder="Ваш пароль">
+                            class="input inputmask form-control input inputmask" placeholder="Ваш пароль"
+                            autocomplete="off">
                     </div>
                     <button [disabled]="authForm.invalid" type="submit" class="btn btn-primary">УВІЙТИ В
                         КАБІНЕТ</button>

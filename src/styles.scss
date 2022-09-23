@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../src/app/shared/style/fonts";
-@import "../src/app/shared/style/variables";
+@import "../src/app/shared/styles/fonts";
+@import "../src/app/shared/styles/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~ngx-toastr/toastr";
+@import "/src/app/shared/styles/theme-material";
 
 * {
   margin: 0;

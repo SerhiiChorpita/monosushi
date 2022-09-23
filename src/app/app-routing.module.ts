@@ -28,6 +28,7 @@ import { UserHistoryComponent } from './account/user-history/user-history.compon
 import { UserPasswordComponent } from './account/user-password/user-password.component';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { UserComponent } from './account/user/user.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'offer-contract', component: OfferContractComponent },
+  { path: 'auth', component: AuthorizationComponent },
   {
     path: 'account', component: AccountComponent, children: [
       { path: 'office', component: UserComponent },

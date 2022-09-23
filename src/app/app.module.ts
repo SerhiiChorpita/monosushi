@@ -8,6 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+
 import { environment } from '../environments/environment';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 
@@ -41,6 +44,9 @@ import { AccountComponent } from './account/account.component';
 import { UserHistoryComponent } from './account/user-history/user-history.component';
 import { UserPasswordComponent } from './account/user-password/user-password.component';
 import { UserComponent } from './account/user/user.component';
+import { SharedModule } from './shared/shared.module';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +74,9 @@ import { UserComponent } from './account/user/user.component';
     AccountComponent,
     UserHistoryComponent,
     UserPasswordComponent,
-    UserComponent
+    UserComponent,
+    AuthDialogComponent,
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,
@@ -76,13 +84,16 @@ import { UserComponent } from './account/user/user.component';
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
     NgbModule,
     GoogleMapsModule,
-    ToastrModule.forRoot({ positionClass: 'inline' })
+    ToastrModule.forRoot({ positionClass: 'inline' }),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

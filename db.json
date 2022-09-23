@@ -31,27 +31,6 @@
         "path": "rolls",
         "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=dba2d7c9-4ec8-4265-9185-6cb5a972df0d"
       },
-      "name": "Філадельфія в кунжуті",
-      "ingredients": "Рис, крем сир, огірок, лосось, кунжут",
-      "weight": "240г",
-      "price": 209,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi.appspot.com/o/images%2Ffiladelfiya-v-kunzhuti.jpg?alt=media&token=a56ed05b-e2ee-4af9-b0bc-dcb3171ca7ab",
-      "count": 1,
-      "id": 1
-    },
-    {
-      "category": {
-        "id": 1,
-        "name": "Роли",
-        "path": "rolls",
-        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=dba2d7c9-4ec8-4265-9185-6cb5a972df0d"
-      },
-      "path": {
-        "id": 1,
-        "name": "Роли",
-        "path": "rolls",
-        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=dba2d7c9-4ec8-4265-9185-6cb5a972df0d"
-      },
       "name": "Філадельфія з лососем",
       "ingredients": "Риc, крем сир, огірок, лосось",
       "weight": "280 г",
