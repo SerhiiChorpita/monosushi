@@ -47,6 +47,8 @@ import { UserComponent } from './account/user/user.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { CheckoutBasketComponent } from './pages/checkout-basket/checkout-basket.component';
+import { WeWillCallComponent } from './pages/we-will-call/we-will-call.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { AuthorizationComponent } from './pages/authorization/authorization.comp
     UserPasswordComponent,
     UserComponent,
     AuthDialogComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    CheckoutBasketComponent,
+    WeWillCallComponent
   ],
   imports: [
     BrowserModule,

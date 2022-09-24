@@ -17,6 +17,7 @@ export class AuthDialogComponent implements OnInit {
 
 
   public authForm!: FormGroup;
+  public registrForm!: FormGroup;
   public isLogin = false;
 
   constructor(
@@ -31,7 +32,48 @@ export class AuthDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.initAuthForm();
+    this.initRegistrForm();
   }
+
+
+  initRegistrForm(): void {
+    this.registrForm = this.fb.group({
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      phoneNumber: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]],
+      passwordRepeat: [null, [Validators.required]]
+    })
+  }
+  registerUser(): void {
+    const { firstName, lastName, phoneNumber, email, password, passwordRepeat } = this.registrForm.value;
+    if (password === passwordRepeat) {
+      this.emailSignUp(firstName, lastName, phoneNumber, email, password).then(() => {
+        this.toastr.success('User successfully created');
+        this.isLogin = !this.isLogin;
+        this.authForm.reset();
+      }).catch(e => {
+        this.toastr.error(e.message)
+      })
+    } else {
+      this.toastr.error('Password does not match another');
+    }
+  }
+  async emailSignUp(name: string, surName: string, tel: string, email: string, password: string): Promise<any> {
+    const credential = await createUserWithEmailAndPassword(this.auth, email, password);
+    const user = {
+      email: credential.user.email,
+      firstName: name,
+      lastName: surName,
+      phoneNumber: tel,
+      address: '',
+      orders: [],
+      role: 'USER'
+    };
+    setDoc(doc(this.afs, 'users', credential.user.uid), user);
+  }
+
 
 
   initAuthForm(): void {
@@ -40,22 +82,25 @@ export class AuthDialogComponent implements OnInit {
       password: [null, [Validators.required]]
     })
   }
-
-
   loginUser(): void {
     // this.dialogRef.close({
     //   FormData: this.authForm.value
     // })
 
     const { email, password } = this.authForm.value;
-    this.login(email, password).then(() => {
-      this.toastr.success('User successfully logined in'),
-        this.dialogRef.close()
-    }).catch(e => {
-      this.toastr.error(e.message)
-    })
+    if (email !== 'admin@gmail.com') {
+      this.login(email, password).then(() => {
+        this.toastr.success('User successfully logined in'),
+          this.dialogRef.close()
+      }).catch(e => {
+        this.toastr.error(e.message)
+      })
+    } else {
+      this.toastr.error('Access for admin from /auth');
+      this.authForm.reset();
+      this.dialogRef.close();
+    }
   }
-
   async login(email: string, password: string): Promise<void> {
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
     docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
@@ -70,31 +115,6 @@ export class AuthDialogComponent implements OnInit {
     }, (e) => {
       console.log('error', e);
     })
-  }
-
-  registerUser(): void {
-    const { email, password } = this.authForm.value;
-    this.emailSignUp(email, password).then(() => {
-      this.toastr.success('User successfully created');
-      this.isLogin = !this.isLogin;
-      this.authForm.reset();
-    }).catch(e => {
-      this.toastr.error(e.message)
-    })
-  }
-
-  async emailSignUp(email: string, password: string): Promise<any> {
-    const credential = await createUserWithEmailAndPassword(this.auth, email, password);
-    const user = {
-      email: credential.user.email,
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      address: '',
-      orders: [],
-      role: 'USER'
-    };
-    setDoc(doc(this.afs, 'users', credential.user.uid), user);
   }
 
   onNoClick(): void {

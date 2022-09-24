@@ -71,11 +71,24 @@ $custom-theme: mat.define-light-theme(
 );
 @include mat.all-component-themes($custom-theme);
 
-.dialog-back {
+.dialog-backLogin,
+.dialog-backCall,
+.dialog-backBasket {
   background-color: rgba(0, 0, 0, 0.701);
 }
 
-.auth-dialog {
+.auth-dialogLogin,
+.auth-dialogCall,
+.auth-dialogBasket {
   width: 500px;
   min-height: 300px;
+}
+
+.dialog-backBasket {
+  top: 90px;
+}
+.auth-dialogBasket {
+  .mat-dialog-container {
+    padding: 0;
+  }
 }

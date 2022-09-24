@@ -8,6 +8,8 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+import { WeWillCallComponent } from 'src/app/pages/we-will-call/we-will-call.component';
+import { CheckoutBasketComponent } from 'src/app/pages/checkout-basket/checkout-basket.component';
 
 
 @Component({
@@ -22,28 +24,23 @@ export class HeaderComponent implements OnInit {
   public toolBasketBg!: string;
   public toolcountArtBg!: string;
 
-  public total: number = 0;
-  public countArticle: number = 0;
   public basket: Array<IProductResponse> = [];
 
-  public willCallCheck = false;
-  public visibility2!: string;
+  public total: number = 0;
+  public countArticle: number = 0;
 
   public sideMenuCheck = false;
   public visibility3!: string;
   public toolsideMenu: string = 'background-image: url(../../../assets/images/bars.svg);';
 
-  public loginModalCheck = false;
   public loginAdminCheck!: boolean;
   public loginUserCheck!: boolean;
-  public visibility4!: string;
   public authForm!: FormGroup;
 
   public drpdwnMenu = false;
   public toolDrpdwnMenu: string = 'background-image: url(../../../assets/images/bars.svg);';
 
   public scrolDown = false;
-
 
   constructor(
     private orderService: OrderService,
@@ -56,6 +53,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.scrollToTop();
     this.loadBasket();
     this.updateBasket();
     this.basketToggle();
@@ -95,11 +93,9 @@ export class HeaderComponent implements OnInit {
 
   openLoginDialog(): void {
     this.dialog.open(AuthDialogComponent, {
-      backdropClass: 'dialog-back',
-      panelClass: 'auth-dialog',
+      backdropClass: 'dialog-backLogin',
+      panelClass: 'auth-dialogLogin',
       autoFocus: false
-    }).afterClosed().subscribe(result => {
-      console.log(result);
     })
   }
 
@@ -137,13 +133,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  productCount(product: IProductResponse, value: boolean): void {
-    if (value && product.count < 100) {
-      ++product.count
-    } else if (!value && product.count > 1) {
-      --product.count
-    }
-  }
+
 
   basketToggle(): void {
     this.basketCheck = !this.basketCheck;
@@ -160,30 +150,21 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  callToggle(): void {
-    this.willCallCheck = !this.willCallCheck;
-    if (this.willCallCheck) {
-      this.visibility2 = 'display:flex; opacity: 1; visibility: visible;';
-      this.visibility3 = '';
-      this.sideMenuCheck = false;
-      document.body.style.overflow = 'hidden';
-    } else {
-      this.visibility2 = '';
-      document.body.style.overflow = 'visible';
-    }
+  openCallDialog(): void {
+    this.dialog.open(WeWillCallComponent, {
+      backdropClass: 'dialog-backCall',
+      panelClass: 'auth-dialogCall',
+      autoFocus: false
+    })
   }
 
-  loginToggle(): void {
-    //   this.loginModalCheck = !this.loginModalCheck;
-    //   if (this.loginModalCheck) {
-    //     this.visibility4 = 'display:flex; opacity: 1; visibility: visible;';
-    //     this.visibility3 = '';
-    //     this.sideMenuCheck = false;
-    //     document.body.style.overflow = 'hidden';
-    //   } else {
-    //     this.visibility4 = '';
-    //     document.body.style.overflow = 'visible';
-    //   }
+  openBasketDialog(): void {
+    this.dialog.open(CheckoutBasketComponent, {
+      backdropClass: 'dialog-backBasket',
+      panelClass: 'auth-dialogBasket',
+      // hostSelector: 'dialog-containerBasket',
+      autoFocus: false
+    })
   }
 
   sideMenuToggle(): void {

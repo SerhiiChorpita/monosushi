@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-end">
+    <a (click)="onNoClick()">✖</a>
+</div>
+<div class="text-center header m-auto">
+    <h3>МИ ЗАТЕЛЕФОНУЄМО</h3>
+    <br>
+    <p class="w-80">Залиште номер телефону і наші менеджери зв’яжуться з вами</p>
+</div>
+<form [formGroup]="callForm">
+    <div class="form-group">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Ваше ім'я</mat-label>
+            <input matInput type="text" formControlName="name">
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Ваш номер телефону</mat-label>
+            <input matInput type="tel" formControlName="phone" autocomplete="off">
+        </mat-form-field>
+    </div>
+    <button class="btn-submit mb-2" mat-raised-button color="primary" type="button"
+        (click)="callUser()">НАДІСЛАТИ</button>
+</form>
