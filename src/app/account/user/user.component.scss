@@ -1,9 +1,16 @@
 @import "../../shared/styles/variables";
-
-.btn-submit {
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+}
+.btn-submit-1,
+.btn-submit-2 {
   margin: 0 0 20px 0;
   display: block;
-  width: 255px;
+  min-width: 200px;
   height: 50px;
   background-color: transparent;
   border: 2px solid $mainColor;
@@ -14,4 +21,49 @@
     background-color: $mainColor;
     border: 2px solid transparent;
   }
+}
+.btn-submit-2 {
+  background-color: $mainColor;
+  border: 2px solid transparent;
+
+  &:hover {
+    background-color: transparent;
+    border: 2px solid $mainColor;
+  }
+}
+.inp-left {
+  padding-left: 0;
+}
+.inp-right {
+  padding-right: 0;
+}
+.main-block {
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+  align-items: flex-start;
+  min-width: 430px;
+  width: 100%;
+  height: 100%;
+}
+.main-bottom-block {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 437px;
+  width: 80%;
+  height: fit-content;
+  padding-left: 12px;
+}
+.squad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  background-color: $mainColor;
+  font-weight: bold;
+  margin-right: 5px;
 }

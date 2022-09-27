@@ -1,6 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ROLE } from 'src/app/shared/constans/role.constant';
 import { IProductResponse } from 'src/app/shared/interface/products/products';
@@ -11,7 +12,6 @@ import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { WeWillCallComponent } from 'src/app/pages/we-will-call/we-will-call.component';
 import { CheckoutBasketComponent } from 'src/app/pages/checkout-basket/checkout-basket.component';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -20,6 +20,7 @@ import { CheckoutBasketComponent } from 'src/app/pages/checkout-basket/checkout-
 export class HeaderComponent implements OnInit {
 
   public basketCheck = true;
+  public basketOpenCheck = true;
   public visibility1!: string;
   public toolBasketBg!: string;
   public toolcountArtBg!: string;
@@ -40,16 +41,13 @@ export class HeaderComponent implements OnInit {
   public drpdwnMenu = false;
   public toolDrpdwnMenu: string = 'background-image: url(../../../assets/images/bars.svg);';
 
-  public scrolDown = false;
-
   constructor(
     private orderService: OrderService,
     private accountService: AccountService,
     private fb: FormBuilder,
     private route: Router,
     private toastr: ToastrService,
-    public dialog: MatDialog
-
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -92,6 +90,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openLoginDialog(): void {
+    this.onNoClick();
     this.dialog.open(AuthDialogComponent, {
       backdropClass: 'dialog-backLogin',
       panelClass: 'auth-dialogLogin',
@@ -119,22 +118,6 @@ export class HeaderComponent implements OnInit {
     }
     this.getTotalPrice();
   }
-
-  getTotalPrice(): void {
-    this.total = this.basket.reduce((total: number, prod: IProductResponse) =>
-      total + prod.count * prod.price, 0)
-    this.countArticle = this.basket.reduce((countArticle: number, prod: IProductResponse) =>
-      countArticle + prod.count, 0)
-  }
-
-  updateBasket(): void {
-    this.orderService.changeBasket.subscribe(() => {
-      this.loadBasket();
-    })
-  }
-
-
-
   basketToggle(): void {
     this.basketCheck = !this.basketCheck;
     if (this.basketCheck) {
@@ -149,8 +132,21 @@ export class HeaderComponent implements OnInit {
       document.body.style.overflow = 'visible';
     }
   }
+  getTotalPrice(): void {
+    this.total = this.basket.reduce((total: number, prod: IProductResponse) =>
+      total + prod.count * prod.price, 0)
+    this.countArticle = this.basket.reduce((countArticle: number, prod: IProductResponse) =>
+      countArticle + prod.count, 0)
+  }
+
+  updateBasket(): void {
+    this.orderService.changeBasket.subscribe(() => {
+      this.loadBasket();
+    })
+  }
 
   openCallDialog(): void {
+    this.onNoClick();
     this.dialog.open(WeWillCallComponent, {
       backdropClass: 'dialog-backCall',
       panelClass: 'auth-dialogCall',
@@ -159,23 +155,27 @@ export class HeaderComponent implements OnInit {
   }
 
   openBasketDialog(): void {
+    this.onNoClick();
+    this.basketOpenCheck = false;
+    this.basketToggle();
     this.dialog.open(CheckoutBasketComponent, {
       backdropClass: 'dialog-backBasket',
       panelClass: 'auth-dialogBasket',
-      // hostSelector: 'dialog-containerBasket',
       autoFocus: false
+    }).afterClosed().subscribe(data => {
+      this.basketToggle();
+      this.basketOpenCheck = true;
     })
   }
 
   sideMenuToggle(): void {
+    this.onNoClick();
     this.sideMenuCheck = !this.sideMenuCheck;
     if (this.sideMenuCheck) {
       this.visibility3 = 'display:flex; opacity: 1; visibility: visible;';
-      document.body.style.overflow = 'hidden';
       this.toolsideMenu = 'background-image:url(../../../assets/images/multiply.svg);'
     } else {
       this.visibility3 = '';
-      document.body.style.overflow = 'visible';
       this.toolsideMenu = 'background-image: url(../../../assets/images/bars.svg);';
     }
   }
@@ -187,6 +187,10 @@ export class HeaderComponent implements OnInit {
     } else {
       this.toolDrpdwnMenu = 'background-image:url(../../../assets/images/bars.svg);';
     }
+  }
+
+  onNoClick(): void {
+    this.dialog.closeAll();
   }
 
   scrollToTop() {

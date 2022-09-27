@@ -32,6 +32,11 @@ export class CheckoutComponent implements OnInit {
     this.updateBasket();
   }
 
+  allBasketsData(): void {
+    // let basket: Array<IProductResponse> = [];
+    localStorage.setItem('basket', JSON.stringify(this.basket));
+    this.orderService.changeBasket.next(true);
+  }
 
   loadBasket(): void {
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
@@ -53,11 +58,21 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  deleteFromBasket(index: number): void {
+    let basket: Array<IProductResponse> = [];
+    basket = JSON.parse(localStorage.getItem('basket') as string);
+    basket.splice(index, 1)
+    localStorage.setItem('basket', JSON.stringify(basket));
+    this.orderService.changeBasket.next(true);
+  }
+
   productCount(product: IProductResponse, value: boolean): void {
     if (value && product.count < 100) {
       ++product.count
+      this.allBasketsData();
     } else if (!value && product.count > 1) {
       --product.count
+      this.allBasketsData();
     }
   }
 

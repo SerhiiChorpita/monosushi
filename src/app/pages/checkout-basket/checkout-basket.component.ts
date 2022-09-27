@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+// import { HeaderComponent } from 'src/app/components/header/header.component';
 import { IProductResponse } from 'src/app/shared/interface/products/products';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-checkout-basket',
@@ -15,11 +16,41 @@ export class CheckoutBasketComponent implements OnInit {
   public countArticle: number = 0;
 
   constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<CheckoutBasketComponent>
+    private dialogRef: MatDialogRef<CheckoutBasketComponent>,
+    private orderService: OrderService,
   ) { }
 
   ngOnInit(): void {
+    this.loadBasket();
+    this.updateBasket();
+  }
+
+  loadBasket(): void {
+    if (localStorage.length > 0 && localStorage.getItem('basket')) {
+      this.basket = JSON.parse(localStorage.getItem('basket') as string)
+    }
+    this.getTotalPrice();
+  }
+
+
+  updateBasket(): void {
+    this.orderService.changeBasket.subscribe(() => {
+      this.loadBasket();
+    })
+  }
+
+  deleteFromBasket(index: number): void {
+    // if (index > 1) {
+    let basket: Array<IProductResponse> = [];
+    basket = JSON.parse(localStorage.getItem('basket') as string);
+    basket.splice(index, 1)
+    localStorage.setItem('basket', JSON.stringify(basket));
+    this.orderService.changeBasket.next(true);
+
+    // } else if (index < 1) {
+    //   localStorage.removeItem('basket');
+    //   this.orderService.changeBasket.next(true);
+    // }
   }
 
   getTotalPrice(): void {
@@ -32,12 +63,25 @@ export class CheckoutBasketComponent implements OnInit {
   productCount(product: IProductResponse, value: boolean): void {
     if (value && product.count < 100) {
       ++product.count
+      this.allBasketsData();
     } else if (!value && product.count > 1) {
       --product.count
+      this.allBasketsData();
     }
+  }
+  allBasketsData(): void {
+    localStorage.setItem('basket', JSON.stringify(this.basket));
+    this.orderService.changeBasket.next(true);
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close()
+  }
+  scrollToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 }

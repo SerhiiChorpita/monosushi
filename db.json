@@ -85,16 +85,20 @@
   "auth": [
     {
       "id": 1,
+      "address": "",
+      "firstName": "Petro",
+      "secondName": "Petriv",
       "email": "admin@gmail.com",
       "password": "qwerty123",
-      "fullName": "Petro Petriv",
       "role": "ADMIN"
     },
     {
       "id": 2,
+      "address": "",
+      "firstName": "Pavlo",
+      "secondName": "Pavliv",
       "email": "user@gmail.com",
       "password": "qwerty123",
-      "fullName": "Pavlo Pavliv",
       "role": "USER"
     }
   ]

@@ -49,6 +49,7 @@ import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.compon
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
 import { CheckoutBasketComponent } from './pages/checkout-basket/checkout-basket.component';
 import { WeWillCallComponent } from './pages/we-will-call/we-will-call.component';
+import { AddressComponent } from './pages/address/address.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { WeWillCallComponent } from './pages/we-will-call/we-will-call.component
     AuthDialogComponent,
     AuthorizationComponent,
     CheckoutBasketComponent,
-    WeWillCallComponent
+    WeWillCallComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,

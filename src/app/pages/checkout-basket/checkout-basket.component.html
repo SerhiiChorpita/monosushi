@@ -1,4 +1,3 @@
-<!-- <div class="basket-out"> -->
 <div class="basket-out__block-1">
     <ng-container *ngIf="basket.length < 1">
         <div class="nothing-here">
@@ -9,7 +8,7 @@
                     КАТАЛОГУ</strong></button>
         </div>
     </ng-container>
-    <ng-container *ngFor="let product of basket">
+    <ng-container *ngFor="let product of basket; index as i">
         <div class="product-to-buy">
             <div class="product-to-buy__img col-3">
                 <img [src]="product.imagePath">
@@ -28,7 +27,7 @@
                     <span> грн</span>
                 </div>
                 <div class="product-to-buy__order__3">
-                    <button></button>
+                    <button (click)="deleteFromBasket(i)"></button>
                 </div>
             </div>
         </div>
@@ -39,7 +38,6 @@
         <p>Сума: <strong>{{ total }}</strong> грн</p>
     </div>
     <button type="button" [disabled]="basket.length < 1" [routerLink]="'/checkout'"
-        (click)="onNoClick()"><strong>ОФОРМИТИ
+        (click)="onNoClick();  scrollToTop()"><strong>ОФОРМИТИ
             ЗАМОВЛЕННЯ</strong></button>
 </div>
-<!-- </div> -->

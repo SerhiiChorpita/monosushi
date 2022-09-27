@@ -81,7 +81,8 @@
                     <button type="button" class="btn drpdwn-2" (click)="sideMenuToggle()"
                         [style]="toolsideMenu"></button>
                 </div>
-                <button type="button" class="container basket-in" (click)="openBasketDialog()">
+                <button type="button" class="container basket-in"
+                    (click)="basketOpenCheck?openBasketDialog():onNoClick()">
                     <div class="basket-in__img">
                         <div class="bascket-before" [style]="toolBasketBg"></div>
                     </div>
@@ -94,8 +95,6 @@
         </nav>
     </div>
 </div>
-<!-- <div class="bg-gray-1" [style]="visibility1" (click)="basketToggle()"></div> -->
-
 
 <div class="side-menu" [style]="visibility3">
     <div class="side-menu__box1">

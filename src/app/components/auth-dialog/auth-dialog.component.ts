@@ -107,7 +107,7 @@ export class AuthDialogComponent implements OnInit {
       const currentUser = { ...user, uid: credential.user.uid };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user['role'] === ROLE.USER) {
-        this.router.navigate(['/office']);
+        this.router.navigate(['/account']);
       } else if (user && user['role'] === ROLE.ADMIN) {
         this.router.navigate(['/admin']);
       }

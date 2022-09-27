@@ -46,7 +46,6 @@ export class AuthorizationComponent implements OnInit {
   loginUser(): void {
     const { email, password } = this.authForm.value;
     this.login(email, password).then(() => {
-      this.toastr.success('User successfully logined in')
     }).catch(e => {
       this.toastr.error(e.message)
     })
@@ -56,17 +55,17 @@ export class AuthorizationComponent implements OnInit {
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
     this.loginSubscription = docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
       const currentUser = { ...user, uid: credential.user.uid };
-      localStorage.setItem('currentUser', JSON.stringify(currentUser));
       if (user && user['role'] === ROLE.USER) {
-        this.router.navigate(['/office']);
+        this.router.navigate(['/account']);
+        this.toastr.success('User successfully logined in')
       } else if (user && user['role'] === ROLE.ADMIN) {
         this.router.navigate(['/admin']);
+        this.toastr.success('ADMIN successfully logined in')
       }
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
       this.accountService.isUserLogin$.next(true);
     }, (e) => {
       console.log('error', e);
     })
   }
-
-
 }

@@ -1,0 +1,46 @@
+<div class="main-block">
+    <div class="d-flex justify-content-end">
+        <a (click)="onNoClick()">✖</a>
+    </div>
+    <div class="text-center header m-auto">
+        <h3>Нова адреса</h3>
+    </div>
+    <form [formGroup]="addressForm" (ngSubmit)="addAdress()">
+        <div class="col-12 form-group">
+            <mat-form-field class="col-12" appearance="outline" color="primary">
+                <mat-label>Вкажіть тип адреси (наприклад дім, робота)</mat-label>
+                <input matInput type="text" formControlName="addressType" autocomplete="on">
+            </mat-form-field>
+        </div>
+        <div class="col-12 form-group">
+            <mat-form-field class="col-12" appearance="outline" color="primary">
+                <mat-label>Введіть вулицю доставки</mat-label>
+                <input matInput type="text" formControlName="street" autocomplete="on">
+            </mat-form-field>
+        </div>
+        <div class="form-group row col-12 d-flex justify-content-between">
+            <div class="col-6 inp-left">
+                <mat-form-field class="col-12" appearance="outline" color="primary">
+                    <mat-label>№ будинку</mat-label>
+                    <input matInput type="text" formControlName="buildingNumber">
+                </mat-form-field>
+            </div>
+            <div class="col-6 inp-right">
+                <mat-form-field class="col-12" appearance="outline" color="primary">
+                    <mat-label>№ квартири</mat-label>
+                    <input matInput type="text" formControlName="apartmentNumber">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+    <div class="col-12 main-bottom-block row d-flex justify-content-between">
+        <button class="col-5 btn btn-submit-1">ПОШУК АДРЕСИ</button>
+        <button class="col-5 btn btn-submit-2" [disabled]="addressForm.invalid" (click)="addAdress()">ЗБЕРЕГТИ</button>
+    </div>
+
+    <div class="container my-5">
+        <div *ngIf="apiLoaded | async">
+            <google-map></google-map>
+        </div>
+    </div>
+</div>

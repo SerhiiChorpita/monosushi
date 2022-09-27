@@ -9,7 +9,7 @@ const MATERIAL = [
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
 ]
 
 @NgModule({

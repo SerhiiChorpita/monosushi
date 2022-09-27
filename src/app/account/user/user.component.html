@@ -1,15 +1,45 @@
-<div class="col-10">
-    <h4 class="card-title mb-4 text-center">Особисті дані</h4>
-    <form [formGroup]="userDataForm" (ngSubmit)="userDataChange()">
-        <div class="col">
-            <div class="mb-3 col-6 m-auto">
-                <input formControlName="name" type="text" class="form-control" id="name">
+<div class="col-12 main-block">
+    <div class="pl-0 mb-4 container d-flex align-items-center">
+        <div class="squad">1</div>
+        <h4 class="card-title">Особисті дані</h4>
+    </div>
+    <div class="container">
+        <form [formGroup]="userDataForm" (ngSubmit)="userDataChange()">
+            <div class="form-group row col-12 d-flex justify-content-between">
+                <div class="col-6 inp-left">
+                    <mat-form-field class="col-12" appearance="outline" color="primary">
+                        <mat-label>Ваше ім'я</mat-label>
+                        <input matInput type="text" formControlName="firstName">
+                    </mat-form-field>
+                </div>
+                <div class="col-6 inp-right">
+                    <mat-form-field class="col-12" appearance="outline" color="primary">
+                        <mat-label>Ваше прізвище</mat-label>
+                        <input matInput type="text" formControlName="lastName">
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="mb-5 col-6 m-auto">
-                <input formControlName="email" type="text" class="form-control" id="email">
+            <div class="col-12 form-group">
+                <mat-form-field class="col-12" appearance="outline" color="primary">
+                    <mat-label>Ваш телефон</mat-label>
+                    <input matInput type="tel" formControlName="phone" autocomplete="on">
+                </mat-form-field>
             </div>
+            <div class="col-12 form-group">
+                <mat-form-field class="col-12" appearance="outline" color="primary">
+                    <mat-label>Ваш email</mat-label>
+                    <input matInput type="email" formControlName="email" autocomplete="on">
+                </mat-form-field>
+            </div>
+            <div class="pl-0 my-4 container d-flex align-items-center">
+                <div class="squad">2</div>
+                <h4 class="card-title">Адреси</h4>
+            </div>
+        </form>
+        <div class="col-12  main-bottom-block row d-flex justify-content-between">
+            <button class="col-5 btn btn-submit-1" (click)="openBasketDialog()">ДОДАТИ АДРЕСУ</button>
+            <button class="col-5 btn btn-submit-2" [disabled]="userDataForm.invalid" (click)="userDataChange()">ЗБЕРЕГТИ
+                ЗМІНИ</button>
         </div>
-        <button [disabled]="userDataForm.invalid" type="submit" class="btn btn-submit col-6 m-auto">ЗБЕРЕГТИ
-            ЗМІНИ</button>
-    </form>
+    </div>
 </div>
