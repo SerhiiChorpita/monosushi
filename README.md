@@ -9,8 +9,12 @@ Screenshot of the application:
 (monosushi_homepage)
 ![monosushi_homepage](https://user-images.githubusercontent.com/96174218/200880315-b241d132-8e21-4c03-bde3-7e90f701e76d.png)
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 (monosushi_user_panel)
-![monosushi_user_panel](https://user-images.githubusercontent.com/96174218/200880329-1449865a-c04f-40c8-8afa-d954cb94614d.png)
+![monosushi_user_panel](https://user-images.githubusercontent.com/96174218/200881872-1327137d-c0ce-4b7f-b731-6b6d2c21b075.png)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 (monosushi_admin_panel)
 ![monosushi_admin_panel](https://user-images.githubusercontent.com/96174218/200880424-0c6bedfd-a3dc-40db-860d-7e0f6130c595.png)
