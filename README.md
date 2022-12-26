@@ -1,27 +1,20 @@
 # MONOSUSHI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+Description: a full-fledged site with an admin panel and a user panel;
 
-## Development server
+I used: Angular 2+, Angular material, Bootstrap, Firebase - cloud solution;
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Screenshot of the application:
 
-## Code scaffolding
+(monosushi_homepage)
+![monosushi_homepage](https://user-images.githubusercontent.com/96174218/200880315-b241d132-8e21-4c03-bde3-7e90f701e76d.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Build
+(monosushi_user_panel)
+![monosushi_user_panel](https://user-images.githubusercontent.com/96174218/200881872-1327137d-c0ce-4b7f-b731-6b6d2c21b075.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+(monosushi_admin_panel)
+![monosushi_admin_panel](https://user-images.githubusercontent.com/96174218/200880424-0c6bedfd-a3dc-40db-860d-7e0f6130c595.png)
