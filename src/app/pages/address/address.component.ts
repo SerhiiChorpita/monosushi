@@ -20,7 +20,7 @@ export class AddressComponent implements OnInit {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddressComponent>
   ) {
-    this.apiLoaded = httpClient.jsonp('http://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY', 'callback')
+    this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY', 'callback')
       .pipe(
         map(() => true),
         catchError(() => of(false)),
@@ -40,7 +40,7 @@ export class AddressComponent implements OnInit {
     })
   }
 
-  addAdress(): void {
+  addAddress(): void {
 
   }
 

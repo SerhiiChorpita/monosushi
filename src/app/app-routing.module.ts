@@ -1,86 +1,60 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { DiscountComponent } from './pages/discount/discount.component';
-import { DiscountInfoComponent } from './pages/discount-info/discount-info.component';
-import { ProductComponent } from './pages/product/product.component';
-import { ProductInfoComponent } from './pages/product-info/product-info.component';
-import { RollsComponent } from './pages/rolls/rolls.component';
-import { SetComponent } from './pages/set/set.component';
-import { DrinksComponent } from './pages/drinks/drinks.component';
-import { SaucesComponent } from './pages/sauces/sauces.component';
-import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delivery-and-payment.component';
-import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { OfferContractComponent } from './pages/offer-contract/offer-contract.component';
-import { ProductInfoResolver } from './shared/services/product/product-info.resolver';
-import { DiscountResolver } from './shared/services/discount/discount.resolver';
 
-import { AdminComponent } from './admin/admin.component';
-import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
-import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
-import { AdminProductComponent } from './admin/admin-product/admin-product.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-
-import { AccountComponent } from './account/account.component';
-import { UserHistoryComponent } from './account/user-history/user-history.component';
-import { UserPasswordComponent } from './account/user-password/user-password.component';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
-import { UserComponent } from './account/user/user.component';
-import { AuthorizationComponent } from './pages/authorization/authorization.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
-  { path: 'home', component: HomeComponent },
-  { path: 'discount', component: DiscountComponent },
   {
-    path: 'discount/:id', component: DiscountInfoComponent,
-    resolve: {
-      discountInfo: DiscountResolver
-    }
+    path: 'home',
+    loadChildren: ()=>import('./pages/home/home.module').then(m=>m.HomeModule)
   },
   {
-    path: 'product/:category', component: ProductComponent, children: [
-      { path: 'rolls', component: RollsComponent },
-      { path: 'set', component: SetComponent },
-      { path: 'drinks', component: DrinksComponent },
-      { path: 'sauces', component: SaucesComponent }
-    ]
+    path: 'discount',
+    loadChildren: ()=>import('./pages/discount/discount.module').then(m=>m.DiscountModule)
   },
   {
-    path: 'product/:category/:id', component: ProductInfoComponent,
-    resolve: {
-      productInfo: ProductInfoResolver
-    }
+    path: 'product/:category',
+    loadChildren: ()=>import('./pages/product/product.module').then(m=>m.ProductModule)
   },
-  { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
-  { path: 'about-us', component: AboutUsComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  {
+    path: 'delivery-and-payment',
+    loadChildren: ()=>import('./pages/delivery-and-payment/delivery-and-payment.module').then(m=>m.DeliveryAndPaymentModule)
+  },
+  {
+    path: 'about-us',
+    loadChildren: ()=>import('./pages/about-us/about-us.module').then(m=>m.AboutUsModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: ()=>import('./pages/checkout/checkout.module').then(m=>m.CheckoutModule)
+  },
   { path: 'offer-contract', component: OfferContractComponent },
-  { path: 'auth', component: AuthorizationComponent },
   {
-    path: 'account', component: AccountComponent, children: [
-      { path: 'office', component: UserComponent },
-      { path: 'history', component: UserHistoryComponent },
-      { path: 'password', component: UserPasswordComponent },
-      { path: '', pathMatch: 'full', redirectTo: 'office' },
-    ]
+    path: 'auth',
+    loadChildren: ()=>import('./components/auth-dialog/auth-dialog.module').then(m=>m.AuthDialogModule)
   },
   {
-    path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
-      { path: 'discount', component: AdminDiscountComponent },
-      { path: 'category', component: AdminCategoryComponent },
-      { path: 'product', component: AdminProductComponent },
-      { path: 'orders', component: AdminOrdersComponent },
-      { path: '', pathMatch: 'full', redirectTo: 'discount' },
-    ]
+    path: 'address',
+    loadChildren: ()=>import('./pages/address/address.module').then(m=>m.AddressModule)
   },
+  {
+    path: 'account',
+    loadChildren: ()=>import('./account/account.module').then(m=>m.AccountModule)
+  },
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    loadChildren: ()=>import('./admin/admin.module').then(m=>m.AdminModule)
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export class GoogleMapsDemoModule { }

@@ -1,4 +1,4 @@
-@import "../../shared/styles/variables";
+@import "../../../shared/styles/variables";
 
 .card {
   width: 80%;
@@ -21,8 +21,8 @@
 .img-mod {
   flex-flow: column nowrap;
   background-color: $mainColor;
-  background-image: url(../../../assets/sushi-image/home/bg-monosushi-logo.svg),
-    url(../../../assets/sushi-image/home/bg-monosushi-logo.svg);
+  background-image: url(../../../../assets/sushi-image/home/bg-monosushi-logo.svg),
+    url(../../../../assets/sushi-image/home/bg-monosushi-logo.svg);
   background-repeat: repeat;
   background-position: 0 0, 190px -52px;
   border-radius: 5px;

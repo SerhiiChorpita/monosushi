@@ -17,8 +17,6 @@ export class ProductComponent implements OnInit {
   public select6 = false;
   public select7 = false;
 
-  public inc = false;
-
   public productStorage: Array<IProductResponse> = [];
 
   constructor(

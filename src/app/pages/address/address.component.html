@@ -5,7 +5,7 @@
     <div class="text-center header m-auto">
         <h3>Нова адреса</h3>
     </div>
-    <form [formGroup]="addressForm" (ngSubmit)="addAdress()">
+    <form [formGroup]="addressForm" (ngSubmit)="addAddress()">
         <div class="col-12 form-group">
             <mat-form-field class="col-12" appearance="outline" color="primary">
                 <mat-label>Вкажіть тип адреси (наприклад дім, робота)</mat-label>
@@ -35,7 +35,7 @@
     </form>
     <div class="col-12 main-bottom-block row d-flex justify-content-between">
         <button class="col-5 btn btn-submit-1">ПОШУК АДРЕСИ</button>
-        <button class="col-5 btn btn-submit-2" [disabled]="addressForm.invalid" (click)="addAdress()">ЗБЕРЕГТИ</button>
+        <button class="col-5 btn btn-submit-2" [disabled]="addressForm.invalid" (click)="addAddress()">ЗБЕРЕГТИ</button>
     </div>
 
     <div class="container my-5">
