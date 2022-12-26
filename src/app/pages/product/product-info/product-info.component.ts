@@ -20,10 +20,8 @@ export class ProductInfoComponent implements OnInit {
   ngOnInit(): void {
     this.scrollToTop();
     this.activatedRoute.data.subscribe(response => {
-      console.log('response',response);
       this.currentProduct = response['discountInfo']
     })
-    console.log(this.currentProduct);
   }
 
   productCount(product: IProductResponse, value: boolean): void {

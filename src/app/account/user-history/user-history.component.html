@@ -1,4 +1,43 @@
-<div class="container">
+<ng-container *ngIf="myOrders.length === 0">
+  <div class="container">
     <p class="mt-3">Поки що ви не зробили жодного замовлення <a class="link-a" [routerLink]="'/home'">перейти в
-            каталог</a></p>
-</div>
+      каталог</a></p>
+  </div>
+</ng-container>
+<ng-container *ngIf="myOrders.length > 0">
+  <div class="container">
+    <table class="table table-responsive">
+      <tr>
+        <th scope="col">Замовлення</th>
+        <th scope="col">Дата та час</th>
+        <th scope="col">Адреса</th>
+        <th scope="col">Сума</th>
+        <th scope="col">Статус</th>
+        <th scope="col"></th>
+      </tr>
+      <ng-container *ngFor="let order of myOrders; index as i">
+        <tbody class="tbody-style">
+          <tr>
+            <td>№ <span class="bold">{{ order.orderNumber }}</span></td>
+            <td>{{ order.orderTime }}</td>
+            <td>{{ order.address }}</td>
+            <td><span class="bold">{{ order.totalAmount }}</span> грн</td>
+            <td >
+              <ul  class="li-style">
+                <li [style]="order['status']?'color:limegreen':'color: red'">{{ order['status']?'Виконано':'Не виконано' }}</li>
+              </ul>
+            </td>
+            <td><a class="link-a">Повторити</a></td>
+          </tr>
+            <ng-container *ngFor="let prod of order['products']; index as i">
+              <tr>
+                <td></td>
+                <td colspan="2">{{ prod['name'] }}</td>
+                <td colspan="2">{{ prod['quantity'] }}</td>
+              </tr>
+            </ng-container>
+        </tbody>
+      </ng-container>
+    </table>
+  </div>
+</ng-container>

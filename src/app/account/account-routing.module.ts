@@ -9,23 +9,15 @@ import { UserPasswordComponent } from './user-password/user-password.component';
 const routes: Routes = [
   {
     path: '',
-    component: AccountComponent
+    component: AccountComponent,
+    children:[
+      { path: 'office', component: UserComponent },
+      { path: 'history', component: UserHistoryComponent },
+      { path: 'password', component: UserPasswordComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'office' },
+    ]
   },
-  {
-    path: 'office',
-    component: UserComponent
-  },
-  {
-    path: 'history',
-    component: UserHistoryComponent
-  },
-  {
-    path: 'password',
-    component: UserPasswordComponent
-  },
-  {
-    path: '', pathMatch: 'full', redirectTo: 'office'
-  },
+
 ];
 
 @NgModule({

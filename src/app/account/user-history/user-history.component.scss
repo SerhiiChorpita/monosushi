@@ -1,9 +1,34 @@
 @import "../../shared/styles/variables";
+
 .link-a {
+  cursor: pointer;
   font-weight: bold;
   color: $mainColor;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.li-style{
+  margin: auto;
+  list-style: circle;
+}
+th, td {
+  padding: 3px;
+  word-wrap:normal;
+  border: none;
+}
+tr{
+  height:60px;
+}
+.bold{
+  font-weight: bold;
+}
+.tbody-style{
+  border-top: 2px solid $mainColor;
+  border-bottom: 2px solid $mainColor;
 }

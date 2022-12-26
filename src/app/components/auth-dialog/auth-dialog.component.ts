@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -19,6 +19,7 @@ export class AuthDialogComponent implements OnInit {
   public authForm!: FormGroup;
   public registrForm!: FormGroup;
   public isLogin = false;
+  public checkPassword = false;
 
   constructor(
     private auth: Auth,
@@ -74,8 +75,6 @@ export class AuthDialogComponent implements OnInit {
     setDoc(doc(this.afs, 'users', credential.user.uid), user);
   }
 
-
-
   initAuthForm(): void {
     this.authForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
@@ -83,10 +82,6 @@ export class AuthDialogComponent implements OnInit {
     })
   }
   loginUser(): void {
-    // this.dialogRef.close({
-    //   FormData: this.authForm.value
-    // })
-
     const { email, password } = this.authForm.value;
     if (email !== 'admin@gmail.com') {
       this.login(email, password).then(() => {
@@ -116,6 +111,27 @@ export class AuthDialogComponent implements OnInit {
       console.log('error', e);
     })
   }
+
+  chekConfirmedPassword():void {
+    this.checkPassword = this.password.value === this.confirmed.value;
+    if(this.password.value !== this.confirmed.value){
+      this.registrForm.controls['passwordRepeat'].setErrors({
+        matchError: `Password confirmation doesn't match`
+      })
+    }
+}
+
+get password():AbstractControl{
+    return this.registrForm.controls['password'];
+}
+
+get confirmed():AbstractControl{
+  return this.registrForm.controls['passwordRepeat'];
+}
+
+checkVisibilityError(control:string, name:string):boolean|null{
+    return this.registrForm.controls[control].errors?.[name];
+}
 
   onNoClick(): void {
     this.dialogRef.close();

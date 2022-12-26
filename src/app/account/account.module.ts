@@ -7,6 +7,7 @@ import { UserHistoryComponent } from './user-history/user-history.component';
 import { AccountComponent } from './account.component';
 import { UserPasswordComponent } from './user-password/user-password.component';
 import { UserComponent } from './user/user.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -15,10 +16,11 @@ import { UserComponent } from './user/user.component';
     UserPasswordComponent,
     UserComponent
   ],
-  imports: [
-    CommonModule,
-    AccountRoutingModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        AccountRoutingModule,
+        SharedModule,
+        MatTableModule
+    ]
 })
 export class AccountModule { }

@@ -66,14 +66,15 @@
             <div class="col-6 inp-right">
                 <mat-form-field appearance="outline" color="primary">
                     <mat-label>Повторіть пароль</mat-label>
-                    <input matInput type="password" formControlName="passwordRepeat" autocomplete="off">
+                    <input matInput type="password" formControlName="passwordRepeat" autocomplete="off" (input)="chekConfirmedPassword()">
                 </mat-form-field>
+              <mat-error *ngIf="checkVisibilityError('passwordRepeat', 'matchError')">Confirmed password is required</mat-error>
             </div>
         </div>
         <button class="col-10 btn-submit mb-2" *ngIf="!isLogin" mat-raised-button color="primary" type="button"
             (click)="loginUser()">УВІЙТИ В КАБІНЕТ</button>
         <button class="col-10 btn-submit mb-2" *ngIf="isLogin" mat-raised-button color="primary" type="button"
-            (click)="registerUser()">ЗАРЕЄСТРУВАТИСЬ</button>
+            (click)="registerUser()" [disabled]="!registrForm.valid">ЗАРЕЄСТРУВАТИСЬ</button>
         <a class="txt2" (click)="changeIsLogin()">
             {{ !isLogin? 'Зареєструватись':'Вже зареєстровані? Увійти' }}</a>
     </form>
