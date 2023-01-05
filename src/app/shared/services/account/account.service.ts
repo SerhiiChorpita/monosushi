@@ -14,8 +14,12 @@ export class AccountService {
 
   private url = environment.BACKEND_URL;
   private api = { auth: `${this.url}/auth` };
+  private static http: HttpClient;
+  private static api: { auth: string };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   login(credential: ILogin): Observable<any> {
     return this.http.get(`${this.api.auth}?email=${credential.email}&password${credential.password}`)
@@ -24,4 +28,7 @@ export class AccountService {
     return this.http.get(`${this.api.auth}?password${credential.password}`)
   }
 
+  static getData(): Observable<any> {
+    return this.http.get(`${this.api.auth}?email='email'&password='password'`)
+  }
 }

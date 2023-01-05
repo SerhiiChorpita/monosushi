@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CheckoutBasketComponent } from './checkout-basket.component';
+import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 
 describe('CheckoutBasketComponent', () => {
   let component: CheckoutBasketComponent;
@@ -8,7 +9,13 @@ describe('CheckoutBasketComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckoutBasketComponent ]
+      declarations: [ CheckoutBasketComponent ],
+      imports:[
+        MatDialogModule
+      ],
+    providers:[
+      { provide: MatDialogRef, useValue: {} }
+    ]
     })
     .compileComponents();
 

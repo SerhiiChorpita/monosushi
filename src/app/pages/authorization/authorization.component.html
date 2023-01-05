@@ -4,7 +4,7 @@
             <div class="login100-pic js-tilt" data-tilt>
                 <img src="assets/images/admin-login-image.png" alt="IMG">
             </div>
-            <form class="login100-form validate-form" [formGroup]="authForm">
+            <form class="login100-form validate-form" [formGroup]="authForm" (submit)="loginUser()">
                 <span class="login100-form-title">Admin login</span>
                 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                     <input formControlName="email" class="input100" type="text" name="email" placeholder="Email">
@@ -22,7 +22,7 @@
                     </span>
                 </div>
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn" type="button" (click)="loginUser()">Login</button>
+                    <button class="login100-form-btn" type="submit">Login</button>
                 </div>
             </form>
         </div>

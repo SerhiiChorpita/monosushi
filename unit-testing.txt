@@ -1,0 +1,67 @@
+
+// 2. Стараємося добитися показника в 50% покритті тестами.
+//   Приклад покриття тестом service
+// describe('SomeService - testing HTTP request method getData()', () => {
+//   let httpTestingController: HttpTestingController
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+//       imports: [HttpClientTestingModule],
+//       providers: [SomeService],
+//     })
+//     someService = TestBed.get(SomeService)
+//     httpTestingController = TestBed.get(
+//       HttpTestingController
+//     )
+//   })
+//   it('can test HttpClient.get', () => {
+//     const data = [1, 2, 3]
+//     someService
+//       .getData()
+//       .subscribe((response) => expect(response).toBe(data))
+//     const req = httpTestingController.expectOne('/api/data')
+//     expect(req.request.method).toBe('GET')
+//     req.flush(data)
+//   })
+//   afterEach(() => httpTestingController.verify())
+// })
+//
+// Приклад покриття тестом pipe
+// cut-text.pipe.ts
+// @Pipe({ name: 'cutText' })
+// export class CutTextPipe implements PipeTransform {
+//   transform(text: string, length: number): string {
+//     if (text.length <= length) return text
+//     else return `${text.substr(0, length)}...`
+//   }
+// }
+// cut-text.pipe.spec.ts
+// describe('CutTextPipe', () => {
+//   let cutText = new CutTextPipe()
+//   it(`doesn't` transform "Hello, World!"', () => {
+//     expect(cutText.transform('Hello, World!', 50)).toBe(
+//       'Hello, World!'
+//     )
+//   })
+//   it('transforms "Hello, World!" to "Hello..."', () => {
+//     expect(cutText.transform('Hello, World!', 5)).toBe(
+//       'Hello...'
+//     )
+//   })
+// })
+
+// Statements   : 39.64% ( 289/729 )
+// Branches     : 7.2% ( 9/125 )
+// Functions    : 34.57% ( 93/269 )
+// Lines        : 36.44% ( 250/686 )
+
+Statements   : 42.19% ( 311/737 )
+Branches     : 7.03% ( 9/128 )
+Functions    : 38.14% ( 103/270 )
+Lines        : 39.19% ( 272/694 )
+
+Statements   : 44.32% ( 328/740 )
+Branches     : 8.33% ( 11/132 )
+Functions    : 41.11% ( 111/270 )
+Lines        : 41.46% ( 289/697 )
+
+

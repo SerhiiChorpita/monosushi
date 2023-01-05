@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ROLE } from 'src/app/shared/constans/role.constant';
-import { IChangePassword } from 'src/app/shared/interface/account/changePassword.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 
 @Component({
@@ -13,7 +12,6 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 export class UserPasswordComponent implements OnInit {
 
   public changePasswordForm!: FormGroup;
-  public changePass!: IChangePassword;
 
   constructor(
     private fb: FormBuilder,
@@ -22,11 +20,11 @@ export class UserPasswordComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initChangePasswordFormForm();
+    this.initChangePasswordForm();
   }
 
 
-  initChangePasswordFormForm(): void {
+  initChangePasswordForm(): void {
     this.changePasswordForm = this.fb.group({
       currentPass: [null, Validators.required],
       password: [null, Validators.required],

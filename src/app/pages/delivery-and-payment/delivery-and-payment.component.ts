@@ -12,7 +12,9 @@ import { catchError, map } from 'rxjs/operators';
 export class DeliveryAndPaymentComponent implements OnInit {
   apiLoaded: Observable<boolean>;
 
-  constructor(httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient
+  ) {
     this.apiLoaded = httpClient.jsonp('http://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY', 'callback')
       .pipe(
         map(() => true),

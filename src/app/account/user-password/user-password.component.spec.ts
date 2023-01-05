@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserPasswordComponent } from './user-password.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrService } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('UserPasswordComponent', () => {
   let component: UserPasswordComponent;
@@ -8,7 +11,14 @@ describe('UserPasswordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserPasswordComponent ]
+      declarations: [ UserPasswordComponent ],
+      imports:[
+        HttpClientTestingModule,
+        ReactiveFormsModule
+      ],
+      providers:[
+        { provide: ToastrService, useValue: {} }
+      ]
     })
     .compileComponents();
 

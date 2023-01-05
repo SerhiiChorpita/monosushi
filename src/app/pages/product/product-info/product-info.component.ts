@@ -19,9 +19,35 @@ export class ProductInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.scrollToTop();
+    if (this.activatedRoute){
     this.activatedRoute.data.subscribe(response => {
-      this.currentProduct = response['discountInfo']
+      if (response['discountInfo']){
+        this.currentProduct = response['discountInfo']
+      } else {
+        this.currentProduct = {
+          id: 1,
+          category: {
+            id: 1,
+            name: 'string',
+            path: 'string',
+            imagePath: 'string'
+          },
+          path: {
+            id: 1,
+            name: 'string',
+            path: 'string',
+            imagePath: 'string'
+          },
+          name: 'string',
+          ingredients: 'string',
+          weight: 10,
+          price: 10,
+          imagePath: 'string',
+          count: 10
+        }
+      }
     })
+    }
   }
 
   productCount(product: IProductResponse, value: boolean): void {

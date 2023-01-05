@@ -6,7 +6,7 @@
         'Зареєструватись'}}</h3>
 </div>
 <ng-container *ngIf="!isLogin">
-    <form [formGroup]="authForm">
+    <form [formGroup]="authForm" (submit)="isLogin?registerUser():loginUser()">
         <div class="col-10 form-group">
             <mat-form-field appearance="outline" color="primary">
                 <mat-label>Ваш email</mat-label>
@@ -19,10 +19,9 @@
                 <input matInput type="password" formControlName="password" autocomplete="off">
             </mat-form-field>
         </div>
-        <button class="col-10 btn-submit mb-2" *ngIf="!isLogin" mat-raised-button color="primary" type="button"
-            (click)="loginUser()">УВІЙТИ В КАБІНЕТ</button>
-        <button class="col-10 btn-submit mb-2" *ngIf="isLogin" mat-raised-button color="primary" type="button"
-            (click)="registerUser()">ЗАРЕЄСТРУВАТИСЬ</button>
+        <button class="col-10 btn-submit mb-2" *ngIf="!isLogin" mat-raised-button color="primary" type="submit">УВІЙТИ В КАБІНЕТ</button>
+        <button class="col-10 btn-submit mb-2" *ngIf="isLogin" mat-raised-button color="primary" type="submit"
+            >ЗАРЕЄСТРУВАТИСЬ</button>
         <a class="txt2" (click)="changeIsLogin()">
             {{ !isLogin? 'Зареєструватись':'Вже зареєстровані? Увійти' }}</a>
     </form>

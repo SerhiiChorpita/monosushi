@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { AccountService } from 'src/app/shared/services/account/account.service';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
-import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { ROLE } from 'src/app/shared/constans/role.constant';
 
 @Component({
@@ -13,7 +13,7 @@ import { ROLE } from 'src/app/shared/constans/role.constant';
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.scss']
 })
-export class AuthorizationComponent implements OnInit {
+export class AuthorizationComponent implements OnInit, OnDestroy {
 
 
   public authForm!: FormGroup;
@@ -33,7 +33,9 @@ export class AuthorizationComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.loginSubscription.unsubscribe();
+    if (this.loginSubscription){
+      this.loginSubscription.unsubscribe();
+    }
   }
 
   initAuthForm(): void {

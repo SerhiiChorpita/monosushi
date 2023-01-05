@@ -10,7 +10,14 @@ import { DiscountService } from 'src/app/shared/services/discount/discount.servi
 })
 export class DiscountInfoComponent implements OnInit {
 
-  public discount!: IDiscountResponse;
+  public discount: IDiscountResponse = {
+    id: 1,
+    date: 'string',
+    name: 'string',
+    header: 'string',
+    description: 'string',
+    imagePath: 'string'
+  }
 
   constructor(
     private discountService: DiscountService,
@@ -20,14 +27,18 @@ export class DiscountInfoComponent implements OnInit {
   ngOnInit(): void {
     this.getOneDiscount();
     this.activatedRoute.data.subscribe(response => {
-      this.discount = response['discountInfo']
+      if (response['discountInfo']){
+        this.discount = response['discountInfo']
+      }
     })
   }
 
   getOneDiscount(): void {
     const DISCOUNT_ID = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.discountService.getOne(DISCOUNT_ID).subscribe(data => {
+      if (data){
       this.discount = data;
+      }
     })
   }
 

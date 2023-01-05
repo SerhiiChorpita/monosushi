@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth, User } from '@angular/fire/auth';
+import { Auth} from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { updateCurrentUser } from '@firebase/auth';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { AddressComponent } from 'src/app/pages/address/address.component';
 import { IUser } from 'src/app/shared/interface/account/userData.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
@@ -17,8 +16,12 @@ export class UserComponent implements OnInit {
 
   public userDataForm!: FormGroup;
   public currentUserData!: IUser;
-
-
+  public currentUser: IUser = {
+      firstName: '',
+      lastName: '',
+      phone: '',
+      email: ''
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -43,12 +46,15 @@ export class UserComponent implements OnInit {
   }
 
   checkData(): IUser {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    if(localStorage.getItem('currentUser')){
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    }
+
     return this.currentUserData = {
-      firstName: currentUser.firstName,
-      lastName: currentUser.lastName,
-      phone: currentUser.phoneNumber,
-      email: currentUser.email
+      firstName: this.currentUser.firstName,
+      lastName: this.currentUser.lastName,
+      phone: this.currentUser.phone,
+      email: this.currentUser.email
     }
   }
 

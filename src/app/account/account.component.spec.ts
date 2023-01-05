@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccountComponent } from './account.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrService } from 'ngx-toastr';
 
 describe('AccountComponent', () => {
   let component: AccountComponent;
@@ -8,7 +10,13 @@ describe('AccountComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AccountComponent ]
+      declarations: [ AccountComponent ],
+      imports:[
+        HttpClientTestingModule
+      ],
+      providers:[
+        { provide: ToastrService, useValue: {} }
+      ]
     })
     .compileComponents();
 

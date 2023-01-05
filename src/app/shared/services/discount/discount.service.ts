@@ -12,7 +12,9 @@ export class DiscountService {
   private url = environment.BACKEND_URL;
   private api = { discount: `${this.url}/discounts` }
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getAll(): Observable<IDiscountResponse[]> {
     return this.http.get<IDiscountResponse[]>(this.api.discount)

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { IUser } from 'src/app/shared/interface/account/userData.interface';
+import { FormGroup } from '@angular/forms';
 import { IProductResponse } from 'src/app/shared/interface/products/products';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
@@ -15,15 +14,11 @@ export class CheckoutComponent implements OnInit {
   public total: number = 0;
   public countArticle: number = 0;
 
-  public authForm!: FormGroup;
-  public adressForm!: FormGroup;
-
   public comment = false;
   public commentKitchen = false;
 
   constructor(
     private orderService: OrderService,
-    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +28,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   allBasketsData(): void {
-    // let basket: Array<IProductResponse> = [];
     localStorage.setItem('basket', JSON.stringify(this.basket));
     this.orderService.changeBasket.next(true);
   }

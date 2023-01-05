@@ -34,6 +34,7 @@ export class AuthDialogComponent implements OnInit {
   ngOnInit(): void {
     this.initAuthForm();
     this.initRegistrForm();
+    console.log(this.isLogin);
   }
 
 
@@ -130,14 +131,14 @@ get confirmed():AbstractControl{
 }
 
 checkVisibilityError(control:string, name:string):boolean|null{
-    return this.registrForm.controls[control].errors?.[name];
+  return this.registrForm.controls[control].errors?.[name];
 }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+onNoClick(): void {
+  this.dialogRef.close();
+}
 
-  changeIsLogin(): void {
-    this.isLogin = !this.isLogin;
-  }
+changeIsLogin(): void {
+  this.isLogin = !this.isLogin;
+}
 }
