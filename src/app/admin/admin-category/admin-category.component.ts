@@ -18,9 +18,9 @@ export class AdminCategoryComponent implements OnInit {
 
   public description!: string;
   public imagePath: string = 'null';
-
+  public adminCategories: Array<ICategoryResponse> = [];
   public adminCategory!: ICategoryResponse[];
-  private currentCategoryId = 0;
+  private currentCategoryId!: number | string;
   public isUploaded = false;
   public editStatus = false;
   public editId!: number;
@@ -50,21 +50,32 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   loadCategory() {
-    this.categoryService.getAll().subscribe(data => {
-      this.adminCategory = data
+    // this.categoryService.getAll().subscribe(data => {
+    //   this.adminCategory = data
+    // })
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[];
     })
   }
 
   addCategory(): void {
 
     if (this.editStatus) {
-      this.categoryService.update(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
+      // this.categoryService.update(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
+      //   this.loadCategory();
+      //   this.toastr.success('Category successfully updated');
+      // })
+      this.categoryService.updateFirebase(this.categoryForm.value, this.currentCategoryId as string).then(() => {
         this.loadCategory();
         this.toastr.success('Category successfully updated');
       })
     } else {
-      this.categoryService.create(this.categoryForm.value).subscribe(() => {
-        this.loadCategory();
+      // this.categoryService.create(this.categoryForm.value).subscribe(() => {
+      //   this.loadCategory();
+      //   this.toastr.success('Category successfully created');
+      // })
+      this.categoryService.createFirebase(this.categoryForm.value).then(() => {
+        // this.loadCategories();
         this.toastr.success('Category successfully created');
       })
     }
@@ -81,19 +92,27 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   editCategory(category: ICategoryResponse): void {
-    this.categoryForm.patchValue({
-      id: category.id,
-      name: category.name,
-      path: category.path,
-      imagePath: category.imagePath
+    // this.categoryForm.patchValue({
+    //   id: category.id,
+    //   name: category.name,
+    //   path: category.path,
+    //   imagePath: category.imagePath
+    // })
+    // this.editStatus = true;
+    // this.currentCategoryId = category.id;
+    // this.isUploaded = true;
+    this.categoryService.getOneFirebase(category.id as string).subscribe(data => {
+      console.log('Firebase:', data);
+
     })
-    this.editStatus = true;
-    this.currentCategoryId = category.id;
-    this.isUploaded = true;
   }
 
   deleteCategory(category: ICategoryResponse): void {
-    this.categoryService.delete(category.id).subscribe(() => {
+    // this.categoryService.delete(category.id).subscribe(() => {
+    //   this.loadCategory();
+    //   this.toastr.success('Category successfully deleted');
+    // })
+    this.categoryService.deleteFirebase(category.id as string).then(() => {
       this.loadCategory();
       this.toastr.success('Category successfully deleted');
     })
