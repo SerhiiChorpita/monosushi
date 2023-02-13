@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -10,9 +10,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 const MATERIAL = [
-    NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,

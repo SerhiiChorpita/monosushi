@@ -29,8 +29,8 @@ export class ProductComponent implements OnInit {
   }
 
   loadProduct() {
-    this.productService.getAll().subscribe(data => {
-      this.productStorage = data;
+    this.productService.getAllFirebase().subscribe(data => {
+      this.productStorage = data as IProductResponse[];
     })
   }
 

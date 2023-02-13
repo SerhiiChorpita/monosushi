@@ -1,36 +1,40 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { IProductRequest, IProductResponse } from '../../interface/products/products';
+import { addDoc, collection, collectionData, CollectionReference, deleteDoc, doc, docData, DocumentData, DocumentReference, Firestore, updateDoc } from '@angular/fire/firestore';
+import { IProductResponse } from '../../interface/products/products';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private url = environment.BACKEND_URL;
-  private api = { product: `${this.url}/product` };
+  private productCollection!: CollectionReference<DocumentData>;
 
-  constructor(private http: HttpClient) { }
-
-  getAll(): Observable<IProductResponse[]> {
-    return this.http.get<IProductResponse[]>(this.api.product)
+  constructor(
+    private afs: Firestore
+  ) {
+    this.productCollection = collection(this.afs, 'product');
   }
 
-  getOne(id: number): Observable<IProductResponse> {
-    return this.http.get<IProductResponse>(`${this.api.product}/${id}`)
+  createFirebase(product: IProductResponse): Promise<DocumentReference<DocumentData>> {
+    return addDoc(this.productCollection, product)
   }
 
-  create(product: IProductRequest): Observable<IProductResponse> {
-    return this.http.post<IProductResponse>(this.api.product, product)
+  getAllFirebase() {
+    return collectionData(this.productCollection, { idField: 'id' })
   }
 
-  update(product: IProductRequest, id: number): Observable<IProductResponse> {
-    return this.http.patch<IProductResponse>(`${this.api.product}/${id}`, product)
+  getOneFirebase(id: string) {
+    const productDocumentReference = doc(this.afs, `product/${id}`);
+    return docData(productDocumentReference, { idField: 'id' });
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.api.product}/${id}`)
+  updateFirebase(product: IProductResponse, id: string) {
+    const productDocumentReference = doc(this.afs, `product/${id}`);
+    return updateDoc(productDocumentReference, { ...product });
+  }
+
+  deleteFirebase(id: string) {
+    const productDocumentReference = doc(this.afs, `product/${id}`);
+    return deleteDoc(productDocumentReference);
   }
 }

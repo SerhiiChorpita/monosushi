@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
   public currentUser: IUser = {
       firstName: '',
       lastName: '',
-      phone: '',
+      phoneNumber: '',
       email: ''
   };
 
@@ -40,7 +40,7 @@ export class UserComponent implements OnInit {
     this.userDataForm = this.fb.group({
       firstName: [this.currentUserData.firstName, Validators.required],
       lastName: [this.currentUserData.lastName, Validators.required],
-      phone: [this.currentUserData.phone, Validators.required],
+      phoneNumber: [this.currentUserData.phoneNumber, Validators.required],
       email: [this.currentUserData.email, Validators.required],
     })
   }
@@ -53,7 +53,7 @@ export class UserComponent implements OnInit {
     return this.currentUserData = {
       firstName: this.currentUser.firstName,
       lastName: this.currentUser.lastName,
-      phone: this.currentUser.phone,
+      phoneNumber: this.currentUser.phoneNumber,
       email: this.currentUser.email
     }
   }
@@ -62,7 +62,7 @@ export class UserComponent implements OnInit {
     this.accountService.login(this.userDataForm.value).subscribe(data => {
       data[0].firstName = this.userDataForm.value.firstName;
       data[0].lastName = this.userDataForm.value.lastName;
-      data[0].phoneNumber = this.userDataForm.value.phone;
+      data[0].phoneNumber = this.userDataForm.value.phoneNumber;
       data[0].email = this.userDataForm.value.email;
       let newUser = data[0];
       console.log(newUser);

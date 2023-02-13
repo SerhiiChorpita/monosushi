@@ -19,9 +19,9 @@ describe('AuthorizationComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ AuthorizationComponent ],
       imports:[
+        ReactiveFormsModule,
         RouterTestingModule,
         HttpClientTestingModule,
-        ReactiveFormsModule,
       ],
       providers:[
         { provide: ToastrService, useValue: {} },

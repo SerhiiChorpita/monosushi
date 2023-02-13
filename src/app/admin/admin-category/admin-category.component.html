@@ -58,7 +58,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let category of adminCategory; index as i">
-                        <td>№{{ i+1 }}</td>
+                        <!-- <td>№{{ i+1 }}</td> -->
+                        <td>{{ category.id}}</td>
                         <td>{{ category.name }}</td>
                         <td>{{ category.path }}</td>
                         <td>

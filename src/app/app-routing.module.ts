@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'offer-contract', component: OfferContractComponent },
   {
     path: 'auth',
-    loadChildren: ()=>import('./components/auth-dialog/auth-dialog.module').then(m=>m.AuthDialogModule)
+    loadChildren: ()=>import('./pages/authorization/authorization-routing.module').then(m=>m.AuthorizationRoutingModule)
   },
   {
     path: 'address',

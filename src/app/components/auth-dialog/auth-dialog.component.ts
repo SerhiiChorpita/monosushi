@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -34,9 +34,7 @@ export class AuthDialogComponent implements OnInit {
   ngOnInit(): void {
     this.initAuthForm();
     this.initRegistrForm();
-    console.log(this.isLogin);
   }
-
 
   initRegistrForm(): void {
     this.registrForm = this.fb.group({
@@ -62,7 +60,7 @@ export class AuthDialogComponent implements OnInit {
       this.toastr.error('Password does not match another');
     }
   }
-  async emailSignUp(name: string, surName: string, tel: string, email: string, password: string): Promise<any> {
+  async emailSignUp(name: string, surName: string, tel: string, email: string, password: string): Promise<void> {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     const user = {
       email: credential.user.email,

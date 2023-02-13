@@ -17,7 +17,7 @@ export class AdminProductComponent implements OnInit {
   public adminCategories: Array<ICategoryResponse> = [];
 
   public productForm!: FormGroup;
-  public currentProductId = 0;
+  public currentProductId!: number | string;
 
   public isUploaded = false;
   public uploadPercent = 0;
@@ -54,8 +54,8 @@ export class AdminProductComponent implements OnInit {
   }
 
   loadCategories() {
-    this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data,
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[],
         this.productForm.patchValue({
           category: this.adminCategories[0].id
         })
@@ -63,21 +63,21 @@ export class AdminProductComponent implements OnInit {
   }
 
   loadProduct() {
-    this.productService.getAll().subscribe(data => {
-      this.productStorage = data;
+    this.productService.getAllFirebase().subscribe(data => {
+      this.productStorage = data as IProductResponse[];
     })
   }
 
   addProduct(): void {
     if (this.editStatus) {
-      this.productService.update(this.productForm.value, this.currentProductId).subscribe(() => {
+      this.productService.updateFirebase(this.productForm.value, this.currentProductId as string).then(() => {
         this.loadProduct();
         this.isOpen = false;
         this.editStatus = false;
         this.toastr.success('Product successfully updated')
       })
     } else {
-      this.productService.create(this.productForm.value).subscribe(() => {
+      this.productService.createFirebase(this.productForm.value).then(() => {
         this.loadProduct();
         this.isOpen = false;
         this.editStatus = false;
@@ -103,7 +103,7 @@ export class AdminProductComponent implements OnInit {
   }
 
   deleteProduct(product: IProductResponse): void {
-    this.productService.delete(product.id).subscribe(() => {
+    this.productService.deleteFirebase(product.id as string).then(() => {
       this.loadProduct();
       this.toastr.success('Product successfully deleted');
     })

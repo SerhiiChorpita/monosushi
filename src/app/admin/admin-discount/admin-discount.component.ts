@@ -20,7 +20,7 @@ export class AdminDiscountComponent implements OnInit {
   public imagePath!: string;
 
   public adminDiscounts!: IDiscountResponse[];
-  private currentDiscountId = 0;
+  private currentDiscountId!: number | string;
   public isUploaded = false;
   public editStatus = false;
   public editId!: number;
@@ -64,20 +64,19 @@ export class AdminDiscountComponent implements OnInit {
   }
 
   loadDiscounts() {
-    this.discountService.getAll().subscribe(data => {
-      this.adminDiscounts = data;
+    this.discountService.getAllFirebase().subscribe(data => {
+      this.adminDiscounts = data as IDiscountResponse[];
     })
   }
 
   addDiscount(): void {
     if (this.editStatus) {
-      this.discountService.update(this.discountForm.value, this.currentDiscountId).subscribe(() => {
+      this.discountService.updateFirebase(this.discountForm.value, this.currentDiscountId as string).then(() => {
         this.loadDiscounts();
         this.toastr.success('Discount successfully updated');
       })
     } else {
-      this.discountService.create(this.discountForm.value).subscribe(() => {
-        this.loadDiscounts();
+      this.discountService.createFirebase(this.discountForm.value).then(() => {
         this.toastr.success('Discount successfully created');
       })
     }
@@ -90,13 +89,13 @@ export class AdminDiscountComponent implements OnInit {
   }
 
   getDiscount(): void {
-    this.discountService.getAll().subscribe(data => {
+    this.discountService.getAllFirebase().subscribe(data => {
       this.adminDiscounts
     })
   }
 
-  getOneDiscount(id: number): void {
-    this.discountService.getOne(id).subscribe(data => {
+  getOneDiscount(id: string): void {
+    this.discountService.getOneFirebase(id).subscribe(data => {
       this.adminDiscounts
     })
   }
@@ -118,7 +117,7 @@ export class AdminDiscountComponent implements OnInit {
   }
 
   deleteDiscount(discount: IDiscountResponse): void {
-    this.discountService.delete(discount.id).subscribe(() => {
+    this.discountService.deleteFirebase(discount.id as string).then(() => {
       this.loadDiscounts();
       this.toastr.success('Discount successfully deleted');
     })

@@ -19,15 +19,19 @@ import { WeWillCallComponent } from './pages/we-will-call/we-will-call.component
 
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    AuthDialogComponent,
     OfferContractComponent,
     CheckoutBasketComponent,
-    WeWillCallComponent
+    WeWillCallComponent,
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,
