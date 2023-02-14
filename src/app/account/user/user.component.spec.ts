@@ -6,8 +6,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ToastrService } from 'ngx-toastr';
 import { Auth } from '@angular/fire/auth';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import {By} from "@angular/platform-browser";
-import {DebugElement} from "@angular/core";
+import { By } from "@angular/platform-browser";
+import { DebugElement } from "@angular/core";
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -17,19 +17,19 @@ describe('UserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserComponent ],
-      imports:[
+      declarations: [UserComponent],
+      imports: [
         ReactiveFormsModule,
         HttpClientTestingModule,
         MatDialogModule
       ],
-      providers:[
+      providers: [
         { provide: ToastrService, useValue: {} },
         { provide: Auth, useValue: {} },
         { provide: MatDialogRef, useValue: {} },
       ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(UserComponent);
     component = fixture.componentInstance;
@@ -43,7 +43,7 @@ describe('UserComponent', () => {
     component.currentUser = {
       firstName: 'firstName',
       lastName: 'lastName',
-      phone: '321654987',
+      phoneNumber: '321654987',
       email: 'firstName@gmail.com'
     }
 

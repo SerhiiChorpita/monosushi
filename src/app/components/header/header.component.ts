@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { WeWillCallComponent } from 'src/app/pages/we-will-call/we-will-call.component';
 import { CheckoutBasketComponent } from 'src/app/pages/checkout-basket/checkout-basket.component';
+import { getAuth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-header',
@@ -69,24 +70,16 @@ export class HeaderComponent implements OnInit {
   }
 
   login(): void {
-    this.accountService.login(this.authForm.value).subscribe(data => {
-      if (data && data.length > 0) {
-        const user = data[0];
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.accountService.isUserLogin$.next(true);
-        if (user && user.role === ROLE.USER) {
-          this.route.navigate(['/account']);
-          this.loginAdminCheck = false;
-          this.loginUserCheck = true;
-          this.toastr.success(`You are logged in. Welcome ${user.fullName}`);
-        } else if (user && user.role === ROLE.ADMIN) {
-          this.route.navigate(['/admin']);
-          this.loginUserCheck = false;
-          this.loginAdminCheck = true;
-          this.toastr.success(`You are logged in. Welcome ${ROLE.ADMIN}`);
-        }
-      }
-    })
+    const auth = getAuth();
+    const user = this.authForm.value;
+    signInWithEmailAndPassword(auth, user.email, user.password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
   }
 
   openLoginDialog(): void {
